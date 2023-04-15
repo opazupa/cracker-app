@@ -3,6 +3,7 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import { AppContextProvider } from '../hooks/useAppContext';
 import { useServiceWorker } from '../hooks/useServiceWorker';
 import { dark, light } from '../styles/themes';
 
@@ -49,7 +50,9 @@ export default function CrackerApp({ Component, pageProps }: AppProps) {
         }}
       >
         <NextUIProvider>
-          <Component {...pageProps} />
+          <AppContextProvider>
+            <Component {...pageProps} />
+          </AppContextProvider>
         </NextUIProvider>
       </NextThemesProvider>
     </>

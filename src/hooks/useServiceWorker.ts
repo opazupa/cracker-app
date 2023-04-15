@@ -26,10 +26,12 @@ export const useServiceWorker = () => {
         // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
         // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
         // You may want to customize the UI prompt accordingly.
+        if (process.env.NODE_ENV == 'development') {
+          return;
+        }
+
         if (
-          confirm(
-            'A newer version of this web app is available, reload to update?',
-          )
+          confirm('A newer version of thie app is available, reload to update?')
         ) {
           wb.addEventListener('controlling', () => {
             window.location.reload();
@@ -39,7 +41,7 @@ export const useServiceWorker = () => {
           wb.messageSkipWaiting();
         } else {
           console.log(
-            'User rejected to reload the web app, keep using old version. New version will be automatically load when user open the app next time.',
+            'User rejected to reload the app, keep using old version. New version will be automatically load when user open the app next time.',
           );
         }
       };
