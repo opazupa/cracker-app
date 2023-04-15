@@ -1,6 +1,6 @@
 {
-  "name": "Next.JS Progressive Web App",
-  "short_name": "Next PWA",
+  "name": "Cracker PWA",
+  "short_name": "Cracker PWA",
   "theme_color": "#ffffff",
   "background_color": "#004740",
   "display": "fullscreen",
@@ -14,8 +14,8 @@
       "type": "image/png"
     },
     {
-      "src": "icons/icon-96x96.png",
-      "sizes": "96x96",
+      "src": "icons/icon-100x100.png",
+      "sizes": "100x100",
       "type": "image/png"
     },
     {
@@ -39,8 +39,8 @@
       "type": "image/png"
     },
     {
-      "src": "icons/icon-384x384.png",
-      "sizes": "384x384",
+      "src": "icons/icon-256x256.png",
+      "sizes": "256x256",
       "type": "image/png"
     },
     {
