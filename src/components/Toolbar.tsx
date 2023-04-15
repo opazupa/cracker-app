@@ -5,7 +5,7 @@ import { DarkMode, Spinner } from '../components';
 export function Toolbar() {
   return (
     <>
-      <Navbar height={60} isCompact variant="floating">
+      <Navbar height={60} variant="floating">
         <Navbar.Brand>
           <Text h3 css={{ marginBottom: 0 }}>
             Let´s crack

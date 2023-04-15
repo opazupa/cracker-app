@@ -1,7 +1,7 @@
 import {
   Button,
   Collapse,
-  Grid,
+  Container,
   Input,
   Modal,
   Spacer,
@@ -19,27 +19,111 @@ export const Content = () => {
 
   return (
     <>
-      <Text b>Today is day {selectedDay === 1 ? '1-3' : selectedDay}</Text>
-      <Button.Group color="secondary">
-        <Button light={selectedDay > 3} onPress={() => setSelectedDay(1)}>
-          1-3
-        </Button>
-        <Button light={selectedDay !== 4} onPress={() => setSelectedDay(4)}>
-          4
-        </Button>
-        <Button light={selectedDay !== 5} onPress={() => setSelectedDay(5)}>
-          5
-        </Button>
-      </Button.Group>
-      <Text b>Meal multiplier {mealMultiplier / 100}</Text>
-      <Input
-        type="range"
-        value={mealMultiplier}
-        min={100}
-        step={10}
-        max={200}
-        onChange={(e) => setMealMultiplier(parseInt(e.target.value, 10))}
-      />
+      <Container display="flex" direction="row">
+        <Container display="flex" direction="column" alignItems="center">
+          <Text b>Day: {selectedDay === 1 ? '1-3' : selectedDay}</Text>
+          <Button.Group color="primary">
+            <Button light={selectedDay > 3} onPress={() => setSelectedDay(1)}>
+              1-3
+            </Button>
+            <Button light={selectedDay !== 4} onPress={() => setSelectedDay(4)}>
+              4
+            </Button>
+            <Button light={selectedDay !== 5} onPress={() => setSelectedDay(5)}>
+              5
+            </Button>
+          </Button.Group>
+          <Text b>Multiplier: {mealMultiplier / 100}</Text>
+          <Input
+            type="range"
+            value={mealMultiplier}
+            min={100}
+            step={10}
+            max={200}
+            onChange={(e) => setMealMultiplier(parseInt(e.target.value, 10))}
+          />
+        </Container>
+      </Container>
+
+      <Spacer x={1} />
+      <Container
+        display="flex"
+        direction="column"
+        alignItems="flex-start"
+        css={{ gap: '$10' }}
+      >
+        <Text b>Morning</Text>
+        <Collapse.Group shadow>
+          <Collapse title="Porridge">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse>
+          <Collapse title="Bread">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse>
+          <Collapse title="Smoothie">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse>
+        </Collapse.Group>
+
+        <Text b>Day</Text>
+        <Collapse.Group shadow>
+          <Collapse title="Lunch/Snack/Dinner">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+            <Button color="primary" onPress={() => setVisible(true)}>
+              Open modal
+            </Button>
+          </Collapse>
+        </Collapse.Group>
+
+        <Text b>Evening</Text>
+        <Collapse.Group shadow>
+          <Collapse title="Porridge">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse>
+          <Collapse title="Bread">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse>
+          <Collapse title="Smoothie">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse>
+        </Collapse.Group>
+      </Container>
+      {/* Modal */}
       <Modal
         scroll
         width="80%"
@@ -67,54 +151,6 @@ export const Content = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Spacer x={2} />
-      <Button auto shadow color="secondary" onPress={() => setVisible(true)}>
-        Open modal
-      </Button>
-      <Grid.Container gap={2}>
-        <Grid>
-          <Collapse
-            shadow
-            title="Option"
-            subtitle="More description about Option"
-          >
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </Text>
-          </Collapse>
-        </Grid>
-        <Grid>
-          <Collapse.Group shadow>
-            <Collapse title="Option A">
-              <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </Text>
-            </Collapse>
-            <Collapse title="Option B">
-              <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </Text>
-            </Collapse>
-            <Collapse title="Option C">
-              <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </Text>
-            </Collapse>
-          </Collapse.Group>
-        </Grid>
-      </Grid.Container>
     </>
   );
 };

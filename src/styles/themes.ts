@@ -1,25 +1,32 @@
-import { createTheme, Theme } from '@nextui-org/react';
+import { createTheme } from '@nextui-org/react';
 
-const sharedTheme: Theme = {
-  theme: {
-    colors: {
-      primary: '#FFD34E',
-      primaryLight: 'transparent',
-      error: '#EE457E',
-    },
-    fonts: {
-      monospace:
-        'Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace',
-    },
-  },
+const fonts = {
+  monospace:
+    'Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace',
 };
 
 export const light = createTheme({
   type: 'light',
-  ...sharedTheme,
+  theme: {
+    fonts: fonts,
+    colors: {
+      primary: '#7928c9',
+      primaryLight: 'transparent',
+      secondary: '#FFD34E',
+      error: '#EE457E',
+    },
+  },
 });
 
 export const dark = createTheme({
   type: 'dark',
-  ...sharedTheme,
+  theme: {
+    fonts: fonts,
+    colors: {
+      primary: '#FFD34E',
+      primaryLight: 'transparent',
+      secondary: '#FFD34E',
+      error: '#EE457E',
+    },
+  },
 });
