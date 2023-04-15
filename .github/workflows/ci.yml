@@ -1,4 +1,4 @@
-name: Check PR
+name: CI check
 
 on:
     pull_request:
@@ -18,16 +18,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node
-        uses: actions/setup-node@v2
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+            node-version: 14
+            cache: 'yarn'
 
-      - name: Install dependencies (with cache)
-        uses: bahmutov/npm-install@HEAD
+      - name: Yarn install
+        run: yarn install --frozen-lockfile
 
-      - name: Check types
-        run: yarn type-check
+      - name: Check build
+        run: yarn build
 
       - name: Check linting
         run: yarn lint
