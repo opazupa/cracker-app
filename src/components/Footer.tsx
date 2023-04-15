@@ -1,4 +1,5 @@
 import { Text } from '@nextui-org/react';
+import confetti from 'canvas-confetti';
 
 export function Footer() {
   return (
@@ -24,7 +25,7 @@ export function Footer() {
       <footer className="footer">
         <div>
           <span>Coded with</span>
-          <Text>😈</Text>
+          <Text onClick={() => confetti({ origin: { x: 0.5, y: 1 } })}>😈</Text>
           <span>&nbsp;-Opa</span>
         </div>
       </footer>
