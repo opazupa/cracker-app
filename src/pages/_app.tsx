@@ -3,11 +3,14 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import { useServiceWorker } from '../hooks/useServiceWorker';
 import { dark, light } from '../styles/themes';
 
 import '../styles/globals.css';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function CrackerApp({ Component, pageProps }: AppProps) {
+  useServiceWorker();
+
   return (
     <>
       <Head>

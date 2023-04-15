@@ -6,7 +6,6 @@ import {
   Text,
   useModal,
 } from '@nextui-org/react';
-import confetti from 'canvas-confetti';
 import React from 'react';
 import { useSwipeable } from 'react-swipeable';
 
@@ -15,7 +14,6 @@ export const Content = () => {
   const handlers = useSwipeable({
     onSwiped: (eventData) => {
       console.log('User Swiped!', eventData);
-      confetti();
     },
   });
   return (
