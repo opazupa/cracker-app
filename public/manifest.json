@@ -2,7 +2,7 @@
   "name": "Cracker PWA",
   "short_name": "Cracker PWA",
   "theme_color": "#ffffff",
-  "background_color": "#004740",
+  "background_color": "#ffffff",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",

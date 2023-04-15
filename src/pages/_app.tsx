@@ -1,5 +1,9 @@
+import { NextUIProvider } from '@nextui-org/react';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+
+import { dark, light } from '../styles/themes';
 
 import '../styles/globals.css';
 
@@ -31,9 +35,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           sizes="32x32"
         />
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
-        <meta name="theme-color" content="#004740" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
-      <Component {...pageProps} />
+      <NextThemesProvider
+        defaultTheme="system"
+        attribute="class"
+        value={{
+          light: light.className,
+          dark: dark.className,
+        }}
+      >
+        <NextUIProvider>
+          <Component {...pageProps} />
+        </NextUIProvider>
+      </NextThemesProvider>
     </>
   );
 }

@@ -20,6 +20,14 @@
       }
     ],
     "quotes": "off",
+    "react/no-unknown-property": [
+      2,
+      {
+        "ignore": [
+          "jsx"
+        ]
+      }
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
