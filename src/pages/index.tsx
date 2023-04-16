@@ -1,6 +1,6 @@
 import { Container } from '@nextui-org/react';
 
-import { Content, Footer, Toolbar } from '../components';
+import { Footer, Program, Toolbar } from '../components';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
       <Container className={styles.container}>
         <Toolbar />
         <main className={styles.main}>
-          <Content />
+          <Program />
         </main>
         <Footer />
       </Container>
