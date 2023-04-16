@@ -26,7 +26,7 @@ export function Footer() {
         <div>
           <span>Coded with</span>
           <Text onClick={() => confetti({ origin: { x: 0.5, y: 1 } })}>😈</Text>
-          <span>&nbsp;-Opa</span>
+          <span>-Opa</span>
         </div>
       </footer>
     </>
