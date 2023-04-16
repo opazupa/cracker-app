@@ -23,7 +23,7 @@ export default function CrackerApp({ Component, pageProps }: AppProps) {
         />
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
-        <title>Cracker PWA</title>
+        <title>Cracker app</title>
 
         <link rel="manifest" href="/manifest.json" />
         <link

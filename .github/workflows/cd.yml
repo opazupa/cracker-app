@@ -1,0 +1,35 @@
+name: CD
+
+on:
+    pull_request:
+    push:
+      branches: [main]
+
+jobs:
+  run-ci:
+    name: Build & Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+            node-version: 14
+            cache: 'yarn'
+
+      - name: Yarn install
+        run: yarn install --frozen-lockfile
+
+      - name: Check build
+        run: yarn build
+
+      - name: Check linting
+        run: yarn lint
+
+      - name: Check commits messages
+        uses: wagoid/commitlint-github-action@v4
