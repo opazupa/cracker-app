@@ -1,4 +1,4 @@
-import { Container, Divider, Row, Text } from '@nextui-org/react';
+import { Checkbox, Container, Divider, Row, Text } from '@nextui-org/react';
 import React from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
@@ -9,9 +9,12 @@ const MealComponent: React.FC<{ component: Food }> = ({ component }) => {
   const { mealMultiplier, programDay } = useAppContext();
   return (
     <li>
-      {component.amount &&
-        `${calculateAmount(component, mealMultiplier, programDay)}g`}{' '}
-      {component.name} {component.category === 'extra' && '(extra)'}
+      <Row align="center" css={{ gap: '$3' }}>
+        <Checkbox color="success" />
+        {component.amount &&
+          `${calculateAmount(component, mealMultiplier, programDay)}g`}{' '}
+        {component.name} {component.category === 'extra' && '(extra)'}
+      </Row>
     </li>
   );
 };
