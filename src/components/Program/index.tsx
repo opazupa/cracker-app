@@ -3,7 +3,7 @@ import React from 'react';
 
 import { MEALS } from '../../meals';
 import DayToggle from './DayToggle';
-import MealComponents from './MealComponents';
+import Meal from './Meal';
 import MultiplierSlider from './MultiplierSlider';
 import ReplaceModal from './ReplaceModal';
 
@@ -27,9 +27,7 @@ export const Program = () => {
         {Object.entries(MEALS).map(([key, meals]) => (
           <Collapse.Group key={key} shadow css={{ minWidth: '100%' }}>
             {meals.map((meal) => (
-              <Collapse key={meal.name} title={meal.name} subtitle={key}>
-                <MealComponents meal={meal} />
-              </Collapse>
+              <Meal key={meal.name} meal={meal} />
             ))}
           </Collapse.Group>
         ))}
