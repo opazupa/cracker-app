@@ -1,6 +1,6 @@
 export type ProgramDay = '1-3' | '4' | '5';
 
-type Category = 'carbs' | 'proteins' | 'fats' | 'extra';
+export type Category = 'carbs' | 'proteins' | 'fats' | 'extra';
 
 export type Food = {
   name: string;
@@ -16,3 +16,5 @@ export type Meal = {
   type: 'all' | 'one-of';
   components: Food[];
 };
+
+export type Replacement = Pick<Food, 'name' | 'category'>;

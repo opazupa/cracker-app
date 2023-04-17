@@ -1,13 +1,10 @@
-import { Collapse, Container, useModal } from '@nextui-org/react';
+import { Collapse, Container } from '@nextui-org/react';
 import React from 'react';
 
 import { MEALS } from '../../meals';
 import Meal from './Meal';
-import ReplaceModal from './ReplaceModal';
 
 export const Program = () => {
-  const { setVisible, bindings } = useModal();
-
   return (
     <>
       <Container
@@ -19,13 +16,17 @@ export const Program = () => {
         {Object.entries(MEALS).map(([key, meals]) => (
           <Collapse.Group key={key} shadow css={{ minWidth: '100%' }}>
             {meals.map((meal) => (
-              <Meal key={meal.name} meal={meal} />
+              <Collapse
+                key={meal.name}
+                title={meal.name}
+                subtitle={meal.type === 'all' && meal.group}
+              >
+                <Meal meal={meal} />
+              </Collapse>
             ))}
           </Collapse.Group>
         ))}
       </Container>
-
-      <ReplaceModal setVisible={setVisible} bindings={bindings} />
     </>
   );
 };

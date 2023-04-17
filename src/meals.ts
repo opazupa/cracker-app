@@ -1,4 +1,4 @@
-import { Food, Meal, ProgramDay } from './types';
+import { Food, Meal, ProgramDay, Replacement } from './types';
 
 const Breakfast: Meal[] = [
   {
@@ -225,16 +225,6 @@ const Evening: Meal[] = [
   },
 ];
 
-// type conversion = {
-//   from: string;
-//   to: string;
-//   multiplier: number;
-// };
-
-// const CONVERSIONS  = {
-//   {}
-// }
-
 export const MEALS: Record<string, Meal[]> = {
   Breakfast,
   Lunch: [{ name: 'Lunch', group: 'lunch', ...LunchOrDinner }],
@@ -242,6 +232,30 @@ export const MEALS: Record<string, Meal[]> = {
   Dinner: [{ name: 'Dinner', group: 'dinner', ...LunchOrDinner }],
   Evening,
 };
+
+export const REPLACEMENTS: Replacement[] = [
+  // Carbs
+  { name: 'Pineapple', category: 'carbs' },
+  // Proteins
+  { name: 'Qvark', category: 'proteins' },
+  // Fats
+  { name: 'Oil', category: 'fats' },
+];
+
+export const CONVERSIONS: Record<string, number> = {
+  // Carbs (rice)
+  Rice: 1,
+  Pineapple: 1.8,
+  'Oats (dry)': 1,
+  // Proteins (chicken)
+  Chicken: 1,
+  Qvark: 1.8,
+  // Fats (oil)
+  Oil: 1,
+  Avocado: 0.5,
+};
+
+const roundToNearest5 = (amount: number) => Math.round(amount / 5) * 5;
 
 export const calculateAmount = (
   food: Food,
@@ -255,8 +269,9 @@ export const calculateAmount = (
   };
 
   if (!food.amount) return null;
-  const amount = food.amount * (mealMultiplier / 100) * getDayMultiplier();
-  return Math.round(amount / 5) * 5; // Round to nearest 5g
+  return roundToNearest5(
+    food.amount * (mealMultiplier / 100) * getDayMultiplier(),
+  );
 };
 
 export const isMain = (meal: Meal) =>
@@ -275,4 +290,15 @@ export const mealChecked = (meal: Meal, checked: Food[]): boolean => {
   } else {
     return checked.length === meal.components.length;
   }
+};
+
+export const convert = (
+  amount: number | null | undefined,
+  from: string,
+  to: string,
+) => {
+  if (!amount) return undefined;
+  if (!CONVERSIONS[from] || !CONVERSIONS[to]) return undefined;
+
+  return roundToNearest5((amount / CONVERSIONS[from]) * CONVERSIONS[to]);
 };
