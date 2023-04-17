@@ -1,4 +1,4 @@
-import { Switch, useTheme } from '@nextui-org/react';
+import { Row, Switch, useTheme } from '@nextui-org/react';
 import { useTheme as useNextTheme } from 'next-themes';
 import React from 'react';
 
@@ -8,10 +8,13 @@ export const DarkMode = () => {
 
   return (
     <>
-      <Switch
-        checked={isDark}
-        onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
-      />
+      <Row css={{ gap: '$1' }}>
+        Dark&nbsp;
+        <Switch
+          checked={isDark}
+          onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+        />
+      </Row>
     </>
   );
 };

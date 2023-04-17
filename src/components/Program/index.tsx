@@ -1,10 +1,8 @@
-import { Collapse, Container, Spacer, useModal } from '@nextui-org/react';
+import { Collapse, Container, useModal } from '@nextui-org/react';
 import React from 'react';
 
 import { MEALS } from '../../meals';
-import DayToggle from './DayToggle';
 import Meal from './Meal';
-import MultiplierSlider from './MultiplierSlider';
 import ReplaceModal from './ReplaceModal';
 
 export const Program = () => {
@@ -12,12 +10,6 @@ export const Program = () => {
 
   return (
     <>
-      <Container display="flex" direction="column" css={{ gap: '$5' }}>
-        <DayToggle />
-        <MultiplierSlider />
-      </Container>
-
-      <Spacer y={2} />
       <Container
         display="flex"
         direction="column"
