@@ -261,3 +261,18 @@ export const calculateAmount = (
 
 export const isMain = (meal: Meal) =>
   ['lunch', 'snack', 'dinner'].includes(meal.group);
+
+export const mealChecked = (meal: Meal, checked: Food[]): boolean => {
+  if (meal.type === 'one-of') {
+    return (
+      (!meal.components.some((c) => c.category === 'carbs') ||
+        checked.some((c) => c.category === 'carbs')) &&
+      (!meal.components.some((c) => c.category === 'proteins') ||
+        (checked.some((c) => c.category === 'proteins') &&
+          (!meal.components.some((c) => c.category === 'fats') ||
+            checked.some((c) => c.category === 'fats'))))
+    );
+  } else {
+    return checked.length === meal.components.length;
+  }
+};

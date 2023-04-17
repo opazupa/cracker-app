@@ -1,7 +1,7 @@
 import { Text } from '@nextui-org/react';
-import confetti from 'canvas-confetti';
 
-import * as pkg from '../../package.json';
+import pkg from '../../package.json';
+import { celebrate } from '../utils';
 
 export function Footer() {
   return (
@@ -28,7 +28,7 @@ export function Footer() {
       <footer className="footer">
         <div>
           <span>Coded with</span>
-          <Text onClick={() => confetti({ origin: { x: 0.5, y: 1 } })}>😈</Text>
+          <Text onClick={celebrate}>😈</Text>
           <span>-Opa</span>
         </div>
         <code>v{pkg.version}</code>

@@ -6,12 +6,12 @@ import {
   Row,
   Text,
 } from '@nextui-org/react';
-import confetti from 'canvas-confetti';
 import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
-import { calculateAmount, isMain } from '../../meals';
+import { calculateAmount, isMain, mealChecked } from '../../meals';
 import { Food, Meal as MealType } from '../../types';
+import { celebrate } from '../../utils';
 
 const MealComponent: React.FC<{
   component: Food;
@@ -44,21 +44,19 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
   };
 
   useEffect(() => {
-    // Sparkle confetti when one of each category is selected
     if (
-      meal.type === 'one-of' &&
-      checked.some((c) => c.category === 'carbs') &&
-      checked.some((c) => c.category === 'proteins') &&
-      checked.some((c) => c.category === 'fats')
+      mealChecked(meal, checked)
+      // // Sparkle confetti when one of each category is selected
+      // (meal.type === 'one-of' &&
+      //   checked.some((c) => c.category === 'carbs') &&
+      //   checked.some((c) => c.category === 'proteins') &&
+      //   checked.some((c) => c.category === 'fats')) ||
+      // // Sparkle confetti when all of components are selected
+      // (meal.type === 'all' && checked.length === meal.components.length)
     ) {
-      confetti();
+      celebrate();
     }
-
-    // Sparkle confetti when all of components are selected
-    if (meal.type === 'all' && checked.length === meal.components.length) {
-      confetti();
-    }
-  }, [checked, meal.type, meal.components]);
+  }, [checked, meal]);
 
   return (
     <Collapse title={meal.name} subtitle={meal.type === 'all' && meal.group}>
