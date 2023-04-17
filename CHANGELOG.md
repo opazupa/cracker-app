@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/opazupa/cracker-app/compare/v1.2.2...v1.3.0) (2023-04-17)
+
+
+### Features
+
+* added version number ([1f03c7a](https://github.com/opazupa/cracker-app/commit/1f03c7ab7376d5a0cf17890830fd3c4fab78bbff))
+* multiplier dropdown ([175adc8](https://github.com/opazupa/cracker-app/commit/175adc8656a44ef2aac5fa0d9d9e42e04f883dc7))
+* multplier dropdown ([15aaf95](https://github.com/opazupa/cracker-app/commit/15aaf952c2d4bb4394bcb25e0e3444d08f2a68e6))
+
+
+### Bug Fixes
+
+* aligned confetti to bottom ([e2da7f7](https://github.com/opazupa/cracker-app/commit/e2da7f7fc33127a0d7d1476f53f9528e7ba4c50b))
+
 ## [1.2.2](https://github.com/opazupa/cracker-app/compare/v1.2.1...v1.2.2) (2023-04-17)
 
 
