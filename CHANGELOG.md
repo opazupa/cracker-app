@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/opazupa/cracker-app/compare/v1.2.0...v1.2.1) (2023-04-17)
+
+
+### Bug Fixes
+
+* triggering confetti with extras ([a7f51f2](https://github.com/opazupa/cracker-app/commit/a7f51f25958ce3b1ca31c2204a68ddc3e63c1965))
+
 ## [1.2.0](https://github.com/opazupa/cracker-app/compare/v1.1.0...v1.2.0) (2023-04-17)
 
 
