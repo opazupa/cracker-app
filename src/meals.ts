@@ -1,4 +1,4 @@
-import { Food, Meal, ProgramDay, Replacement } from './types';
+import { Category, Food, Meal, ProgramDay, Replacement } from './types';
 
 const Breakfast: Meal[] = [
   {
@@ -10,7 +10,7 @@ const Breakfast: Meal[] = [
       { name: 'Cottage cheese (2%)', category: 'proteins', amount: 75 },
       { name: 'Berries', category: 'carbs', amount: 100 },
       { name: 'Hera powder', category: 'proteins', amount: 7 },
-      { name: 'Fruit soup', category: 'extra' },
+      { name: 'Fruit soup', category: 'extra', unConvertible: true },
     ],
   },
   {
@@ -20,8 +20,13 @@ const Breakfast: Meal[] = [
     components: [
       { name: 'Rye/Oat bread', category: 'carbs', amount: 60 },
       { name: 'Full meat cuts', category: 'proteins', amount: 20 },
-      { name: 'Cucumber & Tomato', category: 'extra' },
-      { name: 'Egg (1 pcs)', category: 'proteins', amount: 55 },
+      { name: 'Cucumber & Tomato', category: 'extra', unConvertible: true },
+      {
+        name: 'Egg (1 pcs)',
+        category: 'proteins',
+        amount: 55,
+        unConvertible: true,
+      },
       { name: 'Avocado', category: 'fats', amount: 20 },
       { name: 'Fruits', category: 'carbs', amount: 120, day5x: 1.46 },
     ],
@@ -35,10 +40,11 @@ const Breakfast: Meal[] = [
       { name: 'Qvark (2%)', category: 'proteins', amount: 90 },
       { name: 'Berries', category: 'carbs', amount: 100 },
       { name: 'Avocado', category: 'fats', amount: 40 },
-      { name: 'Skinned milk', category: 'extra' },
+      { name: 'Skinned milk', category: 'extra', unConvertible: true },
     ],
   },
 ];
+
 const LunchOrDinner: Omit<Meal, 'name' | 'group'> = {
   type: 'one-of',
   components: [
@@ -194,7 +200,7 @@ const Evening: Meal[] = [
       { name: 'Cheese (17%)', category: 'fats', amount: 20 },
       { name: 'Pineapple', category: 'carbs', amount: 140 },
       { name: 'Cottage cheese (2%)', category: 'proteins', amount: 100 },
-      { name: 'Banana (~120)', category: 'carbs', amount: 120 },
+      { name: 'Banana', category: 'carbs', amount: 120 },
     ],
   },
   {
@@ -206,8 +212,8 @@ const Evening: Meal[] = [
       { name: 'Cottage cheese (2%)', category: 'proteins', amount: 125 },
       { name: 'Berries', category: 'carbs', amount: 100 },
       { name: 'Nuts', category: 'fats', amount: 10 },
-      { name: 'Banana (~120)', category: 'carbs', amount: 120 },
-      { name: 'Fruit soup', category: 'extra' },
+      { name: 'Banana', category: 'carbs', amount: 120 },
+      { name: 'Fruit soup', category: 'extra', unConvertible: true },
     ],
   },
   {
@@ -218,9 +224,9 @@ const Evening: Meal[] = [
       { name: 'Oats (dry)', category: 'carbs', amount: 30 },
       { name: 'Qvark (2%)', category: 'proteins', amount: 145 },
       { name: 'Berries', category: 'carbs', amount: 100 },
-      { name: 'Banana (~120)', category: 'carbs', amount: 120 },
+      { name: 'Banana', category: 'carbs', amount: 120 },
       { name: 'Nuts', category: 'fats', amount: 10 },
-      { name: 'Skinned milk', category: 'extra' },
+      { name: 'Skinned milk', category: 'extra', unConvertible: true },
     ],
   },
 ];
@@ -242,17 +248,51 @@ export const REPLACEMENTS: Replacement[] = [
   { name: 'Oil', category: 'fats' },
 ];
 
-export const CONVERSIONS: Record<string, number> = {
-  // Carbs (rice)
-  Rice: 1,
-  Pineapple: 1.8,
-  'Oats (dry)': 1,
-  // Proteins (chicken)
-  Chicken: 1,
-  Qvark: 1.8,
-  // Fats (oil)
-  Oil: 1,
-  Avocado: 0.5,
+export const CONVERSIONS: Record<Category, Record<string, number>> = {
+  // Carbs (x rice)
+  carbs: {
+    Rice: 1,
+    Pasta: 0.7,
+    'Couscous/Qvinoa': 0.7,
+    Tortilla: 0.3,
+    'Oats (dry)': 0.3,
+    'Rice cakes': 0.3,
+    Fruits: 1.8,
+    Banana: 1.2,
+    Berries: 2,
+    Pineapple: 1.8,
+    Grapes: 1.5,
+    'Fruit piltti': 2,
+    'Rye/Oat bread': 0.4,
+    'Oat porridge': 1.8,
+  },
+  // Proteins (x chicken)
+  proteins: {
+    Chicken: 1,
+    'Beef (7%)': 1,
+    'Pork (10%)': 1,
+    Fish: 1,
+    Tuna: 1.1,
+    Shrimps: 1.5,
+    'Full meat cuts': 1.4,
+    'Cottage cheese (2%)': 1.6,
+    'Qvark (2%)': 1.9,
+    Skyr: 2.2,
+    'Protein pudding': 1.9,
+    'Hera powder': 0.4,
+    'Mifu slices': 0.6,
+    'Mifu grains': 1.1,
+    'Feta (5%)': 1.3,
+  },
+  // Fats (x oil)
+  fats: {
+    'Olive oil': 1,
+    'Coconut/Avocado oil': 1,
+    Avocado: 2.5,
+    Nuts: 2,
+    Seeds: 2,
+  },
+  extra: {},
 };
 
 const roundToNearest5 = (amount: number) => Math.round(amount / 5) * 5;
@@ -281,11 +321,11 @@ export const mealChecked = (meal: Meal, checked: Food[]): boolean => {
   if (meal.type === 'one-of') {
     return (
       (!meal.components.some((c) => c.category === 'carbs') ||
-        checked.some((c) => c.category === 'carbs')) &&
+        checked.filter((c) => c.category === 'carbs').length === 1) &&
       (!meal.components.some((c) => c.category === 'proteins') ||
-        (checked.some((c) => c.category === 'proteins') &&
-          (!meal.components.some((c) => c.category === 'fats') ||
-            checked.some((c) => c.category === 'fats'))))
+        checked.filter((c) => c.category === 'proteins').length === 1) &&
+      (!meal.components.some((c) => c.category === 'fats') ||
+        checked.filter((c) => c.category === 'fats').length === 1)
     );
   } else {
     return checked.length === meal.components.length;
@@ -297,8 +337,14 @@ export const convert = (
   from: string,
   to: string,
 ) => {
-  if (!amount) return undefined;
-  if (!CONVERSIONS[from] || !CONVERSIONS[to]) return undefined;
+  const flatMap = {
+    ...CONVERSIONS.carbs,
+    ...CONVERSIONS.fats,
+    ...CONVERSIONS.proteins,
+  };
 
-  return roundToNearest5((amount / CONVERSIONS[from]) * CONVERSIONS[to]);
+  if (!amount) return undefined;
+  if (!flatMap[from] || !flatMap[to]) return undefined;
+
+  return roundToNearest5((amount / flatMap[from]) * flatMap[to]);
 };

@@ -24,6 +24,12 @@ export const MealComponent: React.FC<{
   onReset: (component: Food) => void;
 }> = ({ component, onCheck, onSelect, replacement, onReset }) => {
   const { mealMultiplier, programDay } = useAppContext();
+
+  const calculatedAmount = calculateAmount(
+    component,
+    mealMultiplier,
+    programDay,
+  );
   return (
     <>
       <style jsx>{`
@@ -43,20 +49,15 @@ export const MealComponent: React.FC<{
           />
           <Col css={{ display: 'flex', flexDirection: 'column' }}>
             <span className={replacement ? 'replaced' : ''}>
-              {component.amount &&
-                `${calculateAmount(
-                  component,
-                  mealMultiplier,
-                  programDay,
-                )}g`}{' '}
-              {component.name} {component.category === 'extra' && '(extra)'}
+              {calculatedAmount && `${calculatedAmount}g`} {component.name}{' '}
+              {component.category === 'extra' && '(extra)'}
             </span>
 
             {replacement && (
               <span>
-                {component.amount &&
+                {calculatedAmount &&
                   `${convert(
-                    calculateAmount(component, mealMultiplier, programDay),
+                    calculatedAmount,
                     component.name,
                     replacement.name,
                   )}g`}{' '}
@@ -64,7 +65,7 @@ export const MealComponent: React.FC<{
               </span>
             )}
           </Col>
-          {component.category !== 'extra' && (
+          {!component.unConvertible && (
             <span className="grow">
               {replacement ? (
                 <CodeLink text="❌" onClick={() => onReset(component)} />

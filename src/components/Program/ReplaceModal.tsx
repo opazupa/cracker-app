@@ -2,7 +2,7 @@ import { Button, Modal, Row, Text, useModal } from '@nextui-org/react';
 import React from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
-import { calculateAmount, convert, REPLACEMENTS } from '../../meals';
+import { calculateAmount, CONVERSIONS, convert } from '../../meals';
 import { Food, Replacement } from '../../types';
 import CodeLink from '../CodeLink';
 
@@ -44,39 +44,34 @@ const ReplaceModal: React.FC<
       </Modal.Header>
       <Modal.Body>
         <ul>
-          {/* TODO look replacements */}
-          {/* TODO use conversions */}
-          {REPLACEMENTS.filter((r) => r.category === component.category).map(
-            (replacement) => {
-              const convertedAmount = convert(
-                amountToBeReplaced,
-                component.name,
-                replacement.name,
-              );
-              return (
-                <li key={replacement.name}>
-                  <Row
-                    align="center"
-                    justify="space-between"
-                    css={{ gap: '$3' }}
-                  >
-                    {/* Convert amount from */}
-                    {amountToBeReplaced && `${convertedAmount}g`}{' '}
-                    {replacement.name}
-                    <CodeLink
-                      text="Replace"
-                      onClick={() => handleReplace(replacement)}
-                    />
-                  </Row>
-                </li>
-              );
-            },
-          )}
+          {Object.keys(CONVERSIONS[component.category]).map((replacement) => {
+            const convertedAmount = convert(
+              amountToBeReplaced,
+              component.name,
+              replacement,
+            );
+            return (
+              <li key={replacement}>
+                <Row align="center" justify="space-between" css={{ gap: '$3' }}>
+                  {convertedAmount ? `${convertedAmount}g` : '-'} {replacement}
+                  <CodeLink
+                    text="replace"
+                    onClick={() =>
+                      handleReplace({
+                        name: replacement,
+                        category: component.category,
+                      })
+                    }
+                  />
+                </Row>
+              </li>
+            );
+          })}
         </ul>
       </Modal.Body>
       <Modal.Footer>
         <Button auto flat color="error" onPress={() => setVisible(false)}>
-          Cancel
+          cancel
         </Button>
       </Modal.Footer>
     </Modal>

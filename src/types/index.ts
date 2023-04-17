@@ -5,6 +5,7 @@ export type Category = 'carbs' | 'proteins' | 'fats' | 'extra';
 export type Food = {
   name: string;
   category: Category;
+  unConvertible?: boolean;
   amount?: number;
   day4x?: number;
   day5x?: number;
