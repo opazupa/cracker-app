@@ -12,14 +12,12 @@ on:
 
 jobs:
   run-cd:
-    name: Build & Lint
+    name: Deploy to firebase
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
       - name: Setup node
         uses: actions/setup-node@v3

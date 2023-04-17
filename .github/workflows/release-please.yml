@@ -1,5 +1,12 @@
+name: release-please
+
 on:
   workflow_dispatch:
+    inputs:
+      force_release:
+        description: force deployment
+        default: "false"
+        required: false
   push:
     branches:
       - main
@@ -8,11 +15,11 @@ permissions:
   contents: write
   pull-requests: write
 
-name: release-please
-
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - uses: google-github-actions/release-please-action@v3
         id: release
@@ -20,7 +27,11 @@ jobs:
           release-type: node
           package-name: cracker-app
 
-      - uses: ./.github/workflows/deploy.yml
-        if: steps.release.outputs.release_created == 'true'
-        with:
-          environment: prod
+  deploy-prod:
+    uses: ./.github/workflows/deploy.yml
+    needs: [release-please]
+    if: inputs.force_release == 'true' || needs.release-please.outputs.release_created == 'true'
+    with:
+      environment: prod
+    secrets: inherit
+
