@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/opazupa/cracker-app/compare/v1.2.1...v1.2.2) (2023-04-17)
+
+
+### Bug Fixes
+
+* manifest pwa name ([fa58d2c](https://github.com/opazupa/cracker-app/commit/fa58d2c7610848ca8c5b19f697f1979a5c84d4d9))
+
 ## [1.2.1](https://github.com/opazupa/cracker-app/compare/v1.2.0...v1.2.1) (2023-04-17)
 
 
