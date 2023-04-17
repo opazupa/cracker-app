@@ -54,12 +54,8 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
       confetti();
     }
 
-    // Sparkle confetti when all of (non-extra) components are selected
-    if (
-      meal.type === 'all' &&
-      checked.length ===
-        meal.components.filter((c) => c.category !== 'extra').length
-    ) {
+    // Sparkle confetti when all of components are selected
+    if (meal.type === 'all' && checked.length === meal.components.length) {
       confetti();
     }
   }, [checked, meal.type, meal.components]);
