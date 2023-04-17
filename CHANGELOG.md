@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/opazupa/cracker-app/compare/v1.0.0...v1.1.0) (2023-04-17)
+
+
+### Features
+
+* confetti on check completion ([82b4c25](https://github.com/opazupa/cracker-app/commit/82b4c2522403733ba9f43bfe209b107daa4989e6))
+
 ## 1.0.0 (2023-04-16)
 
 
