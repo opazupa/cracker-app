@@ -13,20 +13,14 @@ name: release-please
 jobs:
   release-please:
     runs-on: ubuntu-latest
-    outputs:
-      release_created: ${{ steps.release-please.outputs.releases_created }}
     steps:
       - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
           release-type: node
-          package-name: release-please-action
+          package-name: cracker-app
 
-
-  Deploy-prod:
-    concurrency: prod_environment
-    needs: [release-please]
-    if: needs.release-please.outputs.release_created == 'true'
-    uses: ./.github/workflows/deploy.yml
-    with:
-      environment: prod
-    secrets: inherit
+      - uses: ./.github/workflows/deploy.yml
+        if: steps.release.outputs.release_created == 'true'
+        with:
+          environment: prod
