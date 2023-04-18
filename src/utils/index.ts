@@ -9,7 +9,7 @@ const roundToNearest5 = (amount: number) => Math.round(amount / 5) * 5;
 
 export const calculateAmount = (
   food: Food,
-  mealMultiplier: number,
+  mealMultiplierPercentage: number,
   day: ProgramDay,
 ) => {
   const getDayMultiplier = () => {
@@ -20,7 +20,7 @@ export const calculateAmount = (
 
   if (!food.amount) return null;
   return roundToNearest5(
-    food.amount * (mealMultiplier / 100) * getDayMultiplier(),
+    food.amount * (mealMultiplierPercentage / 100) * getDayMultiplier(),
   );
 };
 

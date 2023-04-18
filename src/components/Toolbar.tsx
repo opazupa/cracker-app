@@ -1,8 +1,8 @@
 import { Navbar, Text } from '@nextui-org/react';
 
 import { DarkMode } from './DarkMode';
-import DayToggle from './Program/DayToggle';
-import Multiplier from './Program/Multiplier';
+import DayToggle from './DayToggle';
+import MealMultiplier from './MealMultiplier';
 import { Spinner } from './Spinner';
 
 export function Toolbar() {
@@ -19,7 +19,7 @@ export function Toolbar() {
         <Navbar.Collapse css={{ marginTop: '-$5' }}>
           <Navbar.CollapseItem>
             <DarkMode />
-            <Multiplier />
+            <MealMultiplier />
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <DayToggle />

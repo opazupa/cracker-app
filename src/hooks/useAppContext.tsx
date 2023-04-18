@@ -16,7 +16,7 @@ export const PROGRAM_DAYS: ProgramDay[] = ['1-3', '4', '5'];
 interface State {
   programDay: ProgramDay;
   startDate: Date;
-  mealMultiplier: number;
+  mealMultiplierPercentage: number; // As in %
   setMealMultiplier: (x: number) => void;
   setProgramDay: (day: ProgramDay) => void;
 }
@@ -35,17 +35,17 @@ export function AppContextProvider({ children }: PropsWithChildren<unknown>) {
   };
 
   const [programDay, setProgramDay] = useState(getCurrentDay());
-  const [mealMultiplier, setMealMultiplier] = useState(100);
+  const [mealMultiplierPercentage, setMealMultiplier] = useState(100);
 
   const value = useMemo<State>(
     () => ({
       programDay,
-      mealMultiplier,
+      mealMultiplierPercentage,
       setMealMultiplier,
       setProgramDay,
       startDate: START_DATE,
     }),
-    [mealMultiplier, programDay],
+    [mealMultiplierPercentage, programDay],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
