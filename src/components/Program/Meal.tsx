@@ -28,11 +28,11 @@ export const MealComponent: React.FC<{
   onSelect: (component: Food) => void;
   onReset: (component: Food) => void;
 }> = ({ component, onCheck, onSelect, replacement, onReset }) => {
-  const { mealMultiplier, programDay } = useAppContext();
+  const { mealMultiplierPercentage, programDay } = useAppContext();
 
   const calculatedAmount = calculateAmount(
     component,
-    mealMultiplier,
+    mealMultiplierPercentage,
     programDay,
   );
   return (

@@ -13,7 +13,7 @@ const ReplaceModal: React.FC<
     onReplace: (toReplace: string, replacement: Replacement) => void;
   }
 > = ({ setVisible, onReplace, bindings, component }) => {
-  const { mealMultiplier, programDay } = useAppContext();
+  const { mealMultiplierPercentage, programDay } = useAppContext();
   if (!component || !component.amount) return null;
 
   const handleReplace = (replacement: Replacement) => {
@@ -23,7 +23,7 @@ const ReplaceModal: React.FC<
 
   const amountToBeReplaced = calculateAmount(
     component,
-    mealMultiplier,
+    mealMultiplierPercentage,
     programDay,
   );
 
