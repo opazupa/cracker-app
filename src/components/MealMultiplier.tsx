@@ -1,5 +1,5 @@
 import { Dropdown, Row } from '@nextui-org/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../hooks/useAppContext';
 
@@ -15,13 +15,16 @@ const MULTIPLIERS: MenuItem[] = [
 
 const MealMultiplier: React.FC = () => {
   const { mealMultiplierPercentage, setMealMultiplier } = useAppContext();
-  const [selected, setSelected] = React.useState(
-    new Set<string | number>([mealMultiplierPercentage.toString()]),
-  );
+  const [selected, setSelected] = useState(new Set<string | number>());
+
+  useEffect(() => {
+    setSelected(
+      new Set<string | number>([mealMultiplierPercentage.toString()]),
+    );
+  }, [mealMultiplierPercentage]);
 
   const handleSelection = (keys: Set<number | string> | 'all') => {
     if (typeof keys === 'string') return;
-    setSelected(keys);
     setMealMultiplier(parseInt(keys.keys().next().value, 10));
   };
 

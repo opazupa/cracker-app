@@ -1,4 +1,5 @@
 import { NextUIProvider } from '@nextui-org/react';
+import { SSRProvider } from '@react-aria/ssr';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -39,20 +40,22 @@ export default function CrackerApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <NextThemesProvider
-        defaultTheme="system"
-        attribute="class"
-        value={{
-          light: light.className,
-          dark: dark.className,
-        }}
-      >
-        <NextUIProvider>
-          <AppContextProvider>
-            <Component {...pageProps} />
-          </AppContextProvider>
-        </NextUIProvider>
-      </NextThemesProvider>
+      <SSRProvider>
+        <NextThemesProvider
+          defaultTheme="system"
+          attribute="class"
+          value={{
+            light: light.className,
+            dark: dark.className,
+          }}
+        >
+          <NextUIProvider>
+            <AppContextProvider>
+              <Component {...pageProps} />
+            </AppContextProvider>
+          </NextUIProvider>
+        </NextThemesProvider>
+      </SSRProvider>
     </>
   );
 }
