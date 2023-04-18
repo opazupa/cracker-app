@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.0](https://github.com/opazupa/cracker-app/compare/v1.3.0...v1.4.0) (2023-04-18)
+
+
+### Features
+
+* finalised conversion logic ([9084f07](https://github.com/opazupa/cracker-app/commit/9084f0746e4a9e351f296b0248b813f421a285f2))
+
+
+### Bug Fixes
+
+* fixed modal scroll issue after close ([1ec7a6d](https://github.com/opazupa/cracker-app/commit/1ec7a6d698cb2855cadc217f770f3bd22bbb3c7c))
+* full meat cut for evening ([e500782](https://github.com/opazupa/cracker-app/commit/e50078262f5b51a67c55e5e0f7802a7a5f7023dc))
+
 ## [1.3.0](https://github.com/opazupa/cracker-app/compare/v1.2.2...v1.3.0) (2023-04-17)
 
 
