@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/opazupa/cracker-app/compare/v1.4.0...v1.4.1) (2023-04-18)
+
+
+### Bug Fixes
+
+* primary color for dropdown ([f66299a](https://github.com/opazupa/cracker-app/commit/f66299a6428a6bd48e1a1422e6330fd163f29c18))
+
 ## [1.4.0](https://github.com/opazupa/cracker-app/compare/v1.3.0...v1.4.0) (2023-04-18)
 
 
