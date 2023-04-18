@@ -2,8 +2,9 @@ import { Button, Modal, Row, Text, useModal } from '@nextui-org/react';
 import React from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
-import { calculateAmount, CONVERSIONS, convert } from '../../meals';
+import { CONVERSIONS } from '../../meals';
 import { Food, Replacement } from '../../types';
+import { calculateAmount, convert } from '../../utils';
 import CodeLink from '../CodeLink';
 
 const ReplaceModal: React.FC<

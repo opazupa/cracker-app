@@ -10,9 +10,14 @@ import {
 import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
-import { calculateAmount, convert, isMain, mealChecked } from '../../meals';
 import { Food, Meal as MealType } from '../../types';
-import { celebrate } from '../../utils';
+import {
+  calculateAmount,
+  celebrate,
+  convert,
+  isMain,
+  mealChecked,
+} from '../../utils';
 import CodeLink from '../CodeLink';
 import ReplaceModal from './ReplaceModal';
 

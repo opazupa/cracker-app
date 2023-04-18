@@ -1,4 +1,4 @@
-import { Category, Food, Meal, ProgramDay, Replacement } from './types';
+import { Category, Meal, Replacement } from './types';
 
 const Breakfast: Meal[] = [
   {
@@ -197,7 +197,12 @@ const Evening: Meal[] = [
     components: [
       { name: 'Rye/Oat bread', category: 'carbs', amount: 60 },
       { name: 'Full meat cut', category: 'proteins', amount: 20 },
-      { name: 'Cheese (17%)', category: 'fats', amount: 20 },
+      {
+        name: 'Cheese (17%)',
+        category: 'fats',
+        amount: 20,
+        unConvertible: true,
+      },
       { name: 'Pineapple', category: 'carbs', amount: 140 },
       { name: 'Cottage cheese (2%)', category: 'proteins', amount: 100 },
       { name: 'Banana', category: 'carbs', amount: 120 },
@@ -293,58 +298,4 @@ export const CONVERSIONS: Record<Category, Record<string, number>> = {
     Seeds: 2,
   },
   extra: {},
-};
-
-const roundToNearest5 = (amount: number) => Math.round(amount / 5) * 5;
-
-export const calculateAmount = (
-  food: Food,
-  mealMultiplier: number,
-  day: ProgramDay,
-) => {
-  const getDayMultiplier = () => {
-    if (day === '4') return food.day4x || 1;
-    else if (day === '5') return food.day5x || 1;
-    return 1;
-  };
-
-  if (!food.amount) return null;
-  return roundToNearest5(
-    food.amount * (mealMultiplier / 100) * getDayMultiplier(),
-  );
-};
-
-export const isMain = (meal: Meal) =>
-  ['lunch', 'snack', 'dinner'].includes(meal.group);
-
-export const mealChecked = (meal: Meal, checked: Food[]): boolean => {
-  if (meal.type === 'one-of') {
-    return (
-      (!meal.components.some((c) => c.category === 'carbs') ||
-        checked.filter((c) => c.category === 'carbs').length === 1) &&
-      (!meal.components.some((c) => c.category === 'proteins') ||
-        checked.filter((c) => c.category === 'proteins').length === 1) &&
-      (!meal.components.some((c) => c.category === 'fats') ||
-        checked.filter((c) => c.category === 'fats').length === 1)
-    );
-  } else {
-    return checked.length === meal.components.length;
-  }
-};
-
-export const convert = (
-  amount: number | null | undefined,
-  from: string,
-  to: string,
-) => {
-  const flatMap = {
-    ...CONVERSIONS.carbs,
-    ...CONVERSIONS.fats,
-    ...CONVERSIONS.proteins,
-  };
-
-  if (!amount) return undefined;
-  if (!flatMap[from] || !flatMap[to]) return undefined;
-
-  return roundToNearest5((amount / flatMap[from]) * flatMap[to]);
 };
