@@ -1,3 +1,3 @@
 # Cracker-app 🍪
 
-> Application for cracker challenge! 🥑🍖🍠
+> App for cracker challenge! 🥑🍖🍠
