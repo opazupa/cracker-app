@@ -1,8 +1,9 @@
 import { Navbar, Text } from '@nextui-org/react';
 
-import { DarkMode, Spinner } from '../components';
+import { DarkMode } from './DarkMode';
 import DayToggle from './Program/DayToggle';
 import Multiplier from './Program/Multiplier';
+import { Spinner } from './Spinner';
 
 export function Toolbar() {
   return (

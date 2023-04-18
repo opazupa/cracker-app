@@ -95,7 +95,6 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
 
   const handleSelect = (component: Food) => {
     setSelectedComponent(component);
-    if (replacements[component.name]) delete replacements[component.name];
     setVisible(true);
   };
 
@@ -121,13 +120,7 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
         setVisible={setVisible}
         component={selectedComponent}
         onReplace={onReplace}
-        bindings={{
-          open: bindings.open,
-          onClose: () => {
-            setSelectedComponent(undefined);
-            bindings.onClose();
-          },
-        }}
+        bindings={bindings}
       />
       {isMain(meal) && meal.type === 'one-of' ? (
         <>
