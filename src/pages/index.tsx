@@ -1,14 +1,34 @@
 import { Container } from '@nextui-org/react';
 
 import { Footer, Program, Toolbar } from '../components';
-import styles from '../styles/Home.module.css';
 
 export default function Home() {
   return (
     <>
-      <Container className={styles.container}>
+      <style jsx>
+        {`
+          .container {
+            min-height: 100vh;
+            padding: 0 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .main {
+            padding: 2rem 0;
+            flex: 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+          }
+        `}
+      </style>
+      <Container className="container">
         <Toolbar />
-        <main className={styles.main}>
+        <main className="main">
           <Program />
         </main>
         <Footer />

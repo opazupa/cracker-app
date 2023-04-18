@@ -1,8 +1,7 @@
 import { createTheme } from '@nextui-org/react';
 
 const fonts = {
-  monospace:
-    'Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace',
+  mono: 'Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace',
 };
 
 export const light = createTheme({
