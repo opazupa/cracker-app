@@ -54,7 +54,7 @@
           2,
           "single",
           {
-            "avoidEscape": true
+            "avoidEscape": true,
           }
         ]
       }
