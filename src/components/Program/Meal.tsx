@@ -87,14 +87,15 @@ export const MealComponent: React.FC<{
 
 const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
   const { setVisible, bindings } = useModal();
-  const [checked, setChecked] = useState<Food[]>([]);
+  const [checkedFoods, setCheckedFoods] = useState<Food[]>([]);
+  const [veggiesChecked, setVeggiesChecked] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<Food>();
   const [replacements, setReplacements] = useState<Record<string, Food>>({});
 
   const handleCheck = (isSelected: boolean, food: Food) => {
-    if (isSelected) setChecked([food, ...checked]);
+    if (isSelected) setCheckedFoods([food, ...checkedFoods]);
     else {
-      setChecked(checked.filter((c) => c.name !== food.name));
+      setCheckedFoods(checkedFoods.filter((c) => c.name !== food.name));
     }
   };
 
@@ -114,10 +115,14 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
   };
 
   useEffect(() => {
-    if (mealChecked(meal, checked)) {
+    if (
+      mealChecked(meal, checkedFoods) &&
+      // Require veggies for 'all' type of meals
+      (meal.type === 'all' || veggiesChecked)
+    ) {
       celebrate();
     }
-  }, [checked, meal]);
+  }, [checkedFoods, meal, veggiesChecked]);
 
   return (
     <>
@@ -130,8 +135,12 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
       {isMain(meal) && meal.type === 'one-of' ? (
         <>
           <Container>
-            <Row align="center" justify="center">
-              <code>Include 150g+ veggies 🥦</code>
+            <Row align="center" css={{ gap: '$3' }}>
+              <Checkbox
+                color="success"
+                onChange={(isSelected) => setVeggiesChecked(isSelected)}
+              />
+              <code>150g+ veggies 🥦</code>
             </Row>
           </Container>
           <ul>
