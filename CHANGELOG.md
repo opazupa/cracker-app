@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/opazupa/cracker-app/compare/v1.4.5...v1.5.0) (2023-04-18)
+
+
+### Features
+
+* multplier persistence ([e38cdf3](https://github.com/opazupa/cracker-app/commit/e38cdf3c1dc406601b45d1587146323de8c3c0b5))
+* show active day and multplier on home ([a7fff63](https://github.com/opazupa/cracker-app/commit/a7fff63cff0522c6d61cf4c3e271ed15e5194e7a))
+
 ## [1.4.5](https://github.com/opazupa/cracker-app/compare/v1.4.4...v1.4.5) (2023-04-18)
 
 
