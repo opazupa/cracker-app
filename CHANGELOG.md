@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/opazupa/cracker-app/compare/v1.4.2...v1.4.3) (2023-04-18)
+
+
+### Bug Fixes
+
+* removed unused meta tags ([4adafc9](https://github.com/opazupa/cracker-app/commit/4adafc92ceb1e648efa1f6eb6a893c48ab5acc68))
+
 ## [1.4.2](https://github.com/opazupa/cracker-app/compare/v1.4.1...v1.4.2) (2023-04-18)
 
 
