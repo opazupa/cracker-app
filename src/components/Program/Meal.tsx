@@ -130,7 +130,7 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
       {isMain(meal) && meal.type === 'one-of' ? (
         <>
           <Container>
-            <Row align="center">
+            <Row align="center" justify="center">
               <code>Include 150g+ veggies 🥦</code>
             </Row>
           </Container>
