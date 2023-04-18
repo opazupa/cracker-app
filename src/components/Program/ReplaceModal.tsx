@@ -72,7 +72,7 @@ const ReplaceModal: React.FC<
       </Modal.Body>
       <Modal.Footer>
         <Row justify="center">
-          <Button auto flat color="gradient" onPress={() => setVisible(false)}>
+          <Button auto color="gradient" onPress={() => setVisible(false)}>
             close
           </Button>
         </Row>
