@@ -1,12 +1,19 @@
-import { Collapse, Container } from '@nextui-org/react';
+import { Collapse, Container, Spacer } from '@nextui-org/react';
 import React from 'react';
 
+import { useAppContext } from '../../hooks/useAppContext';
 import { MEALS } from '../../meals';
 import Meal from './Meal';
 
 export const Program = () => {
+  const { mealMultiplierPercentage, programDay } = useAppContext();
   return (
     <>
+      <Container display="flex" css={{ gap: '$1' }}>
+        <code>Day {programDay}</code>
+        <code>x{mealMultiplierPercentage / 100}</code>
+      </Container>
+      <Spacer y={0.5} />
       <Container
         display="flex"
         direction="column"
