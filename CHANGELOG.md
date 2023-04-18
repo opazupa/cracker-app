@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.4](https://github.com/opazupa/cracker-app/compare/v1.4.3...v1.4.4) (2023-04-18)
+
+
+### Bug Fixes
+
+* typo on cold cuts ([363694a](https://github.com/opazupa/cracker-app/commit/363694a71be6431e01bbf846bdfb34889d5d28ca))
+
 ## [1.4.3](https://github.com/opazupa/cracker-app/compare/v1.4.2...v1.4.3) (2023-04-18)
 
 
