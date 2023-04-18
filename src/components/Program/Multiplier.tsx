@@ -22,26 +22,25 @@ const Multiplier: React.FC = () => {
   return (
     <Row align="center">
       <Dropdown>
-        <Dropdown.Button color="secondary" flat>
+        <Dropdown.Button color="primary">
           {mealMultiplier / 100} x meal
         </Dropdown.Button>
         <Dropdown.Menu
           aria-label="Meal multiplier"
-          color="secondary"
           items={multipliers}
           disallowEmptySelection
           selectionMode="single"
           selectedKeys={selected}
+          textColor="primary"
           onSelectionChange={(keys) => {
             if (typeof keys === 'string') return;
             setSelected(keys);
             setMealMultiplier(parseInt(keys.keys().next().value, 10));
           }}
         >
-          {/* TODO type? */}
-          {(item: any) => (
-            <Dropdown.Item key={item.key} color="secondary">
-              {item.name}
+          {(item) => (
+            <Dropdown.Item key={(item as MenuItem).key}>
+              {(item as MenuItem).name}
             </Dropdown.Item>
           )}
         </Dropdown.Menu>

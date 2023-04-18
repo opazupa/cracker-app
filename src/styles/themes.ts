@@ -10,9 +10,10 @@ export const light = createTheme({
   theme: {
     fonts: fonts,
     colors: {
-      primary: '#7928c9',
+      primary: '#105b63',
       primaryLight: 'transparent',
-      secondary: '#FFD34E',
+      primaryLightContrast: '#105b63',
+      secondary: '#105b63',
       error: '#EE457E',
     },
   },
@@ -23,9 +24,10 @@ export const dark = createTheme({
   theme: {
     fonts: fonts,
     colors: {
-      primary: '#FFD34E',
+      primary: '#105b63',
       primaryLight: 'transparent',
-      secondary: '#FFD34E',
+      primaryLightContrast: '#105b63',
+      secondary: '#105b63',
       error: '#EE457E',
     },
   },
