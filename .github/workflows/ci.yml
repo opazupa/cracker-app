@@ -3,8 +3,6 @@ name: CI check
 on:
     pull_request:
       branches: [main]
-    push:
-      branches: [main, release-please*]
     workflow_call:
 
 jobs:
