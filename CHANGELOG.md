@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.5](https://github.com/opazupa/cracker-app/compare/v1.4.4...v1.4.5) (2023-04-18)
+
+
+### Bug Fixes
+
+* added check for 150g veggies ([6319b8f](https://github.com/opazupa/cracker-app/commit/6319b8f19a0c69803c52fc537225becc11a0f1c9))
+
 ## [1.4.4](https://github.com/opazupa/cracker-app/compare/v1.4.3...v1.4.4) (2023-04-18)
 
 
