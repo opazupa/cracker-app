@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/opazupa/cracker-app/compare/v1.4.1...v1.4.2) (2023-04-18)
+
+
+### Bug Fixes
+
+* close button text color on light theme ([aec50ab](https://github.com/opazupa/cracker-app/commit/aec50abcdee3fedd98a705f0d67b351a0a930122))
+
 ## [1.4.1](https://github.com/opazupa/cracker-app/compare/v1.4.0...v1.4.1) (2023-04-18)
 
 
