@@ -19,7 +19,7 @@ const Breakfast: Meal[] = [
     type: 'all',
     components: [
       { name: 'Rye/Oat bread', category: 'carbs', amount: 60 },
-      { name: 'Full meat cutss', category: 'proteins', amount: 20 },
+      { name: 'Full meat cuts', category: 'proteins', amount: 20 },
       { name: 'Cucumber & Tomato', category: 'extra', unConvertible: true },
       {
         name: 'Egg (1 pcs)',
@@ -159,7 +159,7 @@ const Snack: Meal[] = [
         day5x: 1.125,
       },
       {
-        name: 'Full meat cutss',
+        name: 'Full meat cuts',
         category: 'proteins',
         amount: 110,
         day4x: 1.125,
@@ -279,7 +279,7 @@ export const CONVERSIONS: Record<Category, Record<string, number>> = {
     Fish: 1,
     Tuna: 1.1,
     Shrimps: 1.5,
-    'Full meat cutss': 1.4,
+    'Full meat cuts': 1.4,
     'Cottage cheese (2%)': 1.6,
     'Qvark (2%)': 1.9,
     Skyr: 2.2,
