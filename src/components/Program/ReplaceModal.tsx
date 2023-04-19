@@ -4,7 +4,7 @@ import React from 'react';
 import { useAppContext } from '../../hooks/useAppContext';
 import { CONVERSIONS } from '../../meals';
 import { Food, Replacement } from '../../types';
-import { calculateAmount, convert } from '../../utils';
+import { convert } from '../../utils';
 import CodeLink from '../CodeLink';
 
 const ReplaceModal: React.FC<
@@ -13,7 +13,7 @@ const ReplaceModal: React.FC<
     onReplace: (toReplace: string, replacement: Replacement) => void;
   }
 > = ({ setVisible, onReplace, bindings, component }) => {
-  const { mealMultiplierPercentage, programDay } = useAppContext();
+  const { calculateAmount } = useAppContext();
   if (!component || !component.amount) return null;
 
   const handleReplace = (replacement: Replacement) => {
@@ -21,11 +21,7 @@ const ReplaceModal: React.FC<
     setVisible(false);
   };
 
-  const amountToBeReplaced = calculateAmount(
-    component,
-    mealMultiplierPercentage,
-    programDay,
-  );
+  const amountToBeReplaced = calculateAmount(component);
 
   return (
     <Modal

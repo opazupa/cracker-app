@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
 import { Food, Meal as MealType } from '../../types';
-import { calculateAmount, celebrate, convert, mealChecked } from '../../utils';
+import { celebrate, convert, mealChecked } from '../../utils';
 import CodeLink from '../CodeLink';
 import ReplaceModal from './ReplaceModal';
 
@@ -32,13 +32,9 @@ const MealComponent: React.FC<{
   onSelect: (component: Food) => void;
   onReset: (component: Food) => void;
 }> = ({ component, onCheck, onSelect, replacement, onReset }) => {
-  const { mealMultiplierPercentage, programDay } = useAppContext();
+  const { calculateAmount } = useAppContext();
 
-  const calculatedAmount = calculateAmount(
-    component,
-    mealMultiplierPercentage,
-    programDay,
-  );
+  const calculatedAmount = calculateAmount(component);
   return (
     <>
       <style jsx>{`

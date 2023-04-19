@@ -1,6 +1,7 @@
 import React, {
   createContext,
   PropsWithChildren,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -8,8 +9,8 @@ import React, {
 } from 'react';
 
 import { getMealMultiplier, saveMealMultiplier } from '../persistence';
-import { ProgramDay } from '../types';
-import { getCurrentDay } from '../utils';
+import { Food, ProgramDay } from '../types';
+import { getCurrentDay, roundToNearest5 } from '../utils';
 
 export const PROGRAM_DAYS: ProgramDay[] = ['1-3', '4', '5'];
 interface State {
@@ -17,6 +18,7 @@ interface State {
   mealMultiplierPercentage: number; // As in %
   setMealMultiplier: (x: number) => void;
   setProgramDay: (day: ProgramDay) => void;
+  calculateAmount: (food: Food) => number | null;
 }
 
 export const AppContext = createContext<State | undefined>(undefined);
@@ -34,6 +36,25 @@ export function AppContextProvider({ children }: PropsWithChildren<unknown>) {
     }
   }, []);
 
+  /**
+   * Calculate amount of food based on programday
+   */
+  const calculateAmount = useCallback(
+    (food: Food) => {
+      const getDayMultiplier = () => {
+        if (programDay === '4') return food.day4x || 1;
+        else if (programDay === '5') return food.day5x || 1;
+        return 1;
+      };
+
+      if (!food.amount) return null;
+      return roundToNearest5(
+        food.amount * (mealMultiplierPercentage / 100) * getDayMultiplier(),
+      );
+    },
+    [mealMultiplierPercentage, programDay],
+  );
+
   const value = useMemo<State>(
     () => ({
       programDay,
@@ -44,8 +65,9 @@ export function AppContextProvider({ children }: PropsWithChildren<unknown>) {
         saveMealMultiplier(x);
       },
       setProgramDay,
+      calculateAmount,
     }),
-    [mealMultiplierPercentage, programDay],
+    [calculateAmount, mealMultiplierPercentage, programDay],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
