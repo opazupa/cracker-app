@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/opazupa/cracker-app/compare/v1.5.1...v1.5.2) (2023-04-19)
+
+
+### Bug Fixes
+
+* use swipes on the whole page level ([8d9cc1f](https://github.com/opazupa/cracker-app/commit/8d9cc1f944ce9a217ac0016ccd572036482c8a82))
+
 ## [1.5.1](https://github.com/opazupa/cracker-app/compare/v1.5.0...v1.5.1) (2023-04-19)
 
 
