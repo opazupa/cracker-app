@@ -1,33 +1,14 @@
 import { Container } from '@nextui-org/react';
-import { useCallback, useState } from 'react';
-import { useSwipeable } from 'react-swipeable';
 
 import { Footer, Program, Toolbar } from '../components';
 import styles from '../styles/Home.module.css';
-import { getTimeOfTheDay, nextTimeOfTheDay } from '../utils';
 
 export default function Home() {
-  const [selectedTimeOfTheDay, setTimeOfTheDay] = useState(getTimeOfTheDay());
-
-  const handleSwipe = useCallback(
-    (swipedFrom: 'left' | 'right') => {
-      setTimeOfTheDay(nextTimeOfTheDay(selectedTimeOfTheDay, swipedFrom));
-    },
-    [selectedTimeOfTheDay],
-  );
-
-  const handlers = useSwipeable({
-    // Hox the direction is the opposite to have the natural direction
-    onSwipedLeft: () => handleSwipe('right'),
-    onSwipedRight: () => handleSwipe('left'),
-    preventScrollOnSwipe: true,
-  });
-
   return (
-    <Container {...handlers} className={styles.container}>
+    <Container className={styles.container}>
       <Toolbar />
       <main className={styles.main}>
-        <Program selectedTimeOfTheDay={selectedTimeOfTheDay} />
+        <Program />
       </main>
       <Footer />
     </Container>

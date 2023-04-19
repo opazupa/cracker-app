@@ -1,6 +1,10 @@
 export type ProgramDay = '1-3' | '4' | '5';
 
-export type TimeOfTheDay = 'Morning' | 'Afternoon' | 'Evening';
+export enum TimeOfTheDay {
+  Morning = 0,
+  Afternoon = 1,
+  Evening = 2,
+}
 
 export type Category = 'carbs' | 'proteins' | 'fats' | 'extra';
 

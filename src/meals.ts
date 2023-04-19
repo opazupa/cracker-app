@@ -237,7 +237,7 @@ const Evening: Meal[] = [
   },
 ];
 
-export const MEALS: Record<TimeOfTheDay, Meal[]> = {
+export const MEALS: Record<keyof typeof TimeOfTheDay, Meal[]> = {
   Morning: Breakfast,
   Afternoon: [
     { name: 'Lunch', ...LunchOrDinner },

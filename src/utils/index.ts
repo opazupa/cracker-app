@@ -21,28 +21,13 @@ export const getCurrentDay = (): ProgramDay => {
 };
 
 /**
- * Get current time of the day
+ * Get meal for current time of the day
  */
-export const getTimeOfTheDay = (): TimeOfTheDay => {
+export const getMealForTimeOfTheDay = (): TimeOfTheDay => {
   const hours = getHours(new Date());
-  if (hours < 11) return 'Morning';
-  if (hours < 20) return 'Afternoon';
-  return 'Evening';
-};
-
-/**
- * Move to next/previous from current time of the day
- */
-export const nextTimeOfTheDay = (
-  current: TimeOfTheDay,
-  direction: 'left' | 'right' = 'right',
-): TimeOfTheDay => {
-  if (current === 'Morning' && direction === 'right') return 'Afternoon';
-  if (current === 'Afternoon')
-    return direction === 'right' ? 'Evening' : 'Morning';
-  if (current === 'Evening' && direction === 'left') return 'Afternoon';
-
-  return current;
+  if (hours < 11) return TimeOfTheDay.Morning;
+  if (hours < 20) return TimeOfTheDay.Afternoon;
+  return TimeOfTheDay.Evening;
 };
 
 // Celebrate with confetti
