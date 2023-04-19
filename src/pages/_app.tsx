@@ -6,12 +6,12 @@ import Head from 'next/head';
 
 import { AppContextProvider } from '../hooks/useAppContext';
 import { useServiceWorker } from '../hooks/useServiceWorker';
-import { useGlobalStyles } from '../styles/globals';
 import { dark, light } from '../styles/themes';
+
+import '../styles/globals.css';
 
 export default function CrackerApp({ Component, pageProps }: AppProps) {
   useServiceWorker();
-  useGlobalStyles();
 
   return (
     <>
