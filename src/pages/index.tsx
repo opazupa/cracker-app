@@ -10,15 +10,16 @@ export default function Home() {
   const [selectedTimeOfTheDay, setTimeOfTheDay] = useState(getTimeOfTheDay());
 
   const handleSwipe = useCallback(
-    (direction: 'left' | 'right') => {
-      setTimeOfTheDay(nextTimeOfTheDay(selectedTimeOfTheDay, direction));
+    (swipedFrom: 'left' | 'right') => {
+      setTimeOfTheDay(nextTimeOfTheDay(selectedTimeOfTheDay, swipedFrom));
     },
     [selectedTimeOfTheDay],
   );
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => handleSwipe('left'),
-    onSwipedRight: () => handleSwipe('right'),
+    // Hox the direction is the opposite to have the natural direction
+    onSwipedLeft: () => handleSwipe('right'),
+    onSwipedRight: () => handleSwipe('left'),
     preventScrollOnSwipe: true,
   });
 
