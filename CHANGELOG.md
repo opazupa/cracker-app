@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/opazupa/cracker-app/compare/v1.5.5...v1.6.0) (2023-04-19)
+
+
+### Features
+
+* animated slider for swiping ([e071e24](https://github.com/opazupa/cracker-app/commit/e071e24732a77feef80b5f632e0f88c3786d4b0d))
+
 ## [1.5.5](https://github.com/opazupa/cracker-app/compare/v1.5.4...v1.5.5) (2023-04-19)
 
 
