@@ -19,6 +19,7 @@ export default function Home() {
   const handlers = useSwipeable({
     onSwipedLeft: () => handleSwipe('left'),
     onSwipedRight: () => handleSwipe('right'),
+    preventScrollOnSwipe: true,
   });
 
   return (
