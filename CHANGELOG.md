@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.5](https://github.com/opazupa/cracker-app/compare/v1.5.4...v1.5.5) (2023-04-19)
+
+
+### Bug Fixes
+
+* increased gap for readability ([cbaed6a](https://github.com/opazupa/cracker-app/commit/cbaed6af74dfae7fba1572fac51ac34048a0138b))
+
 ## [1.5.4](https://github.com/opazupa/cracker-app/compare/v1.5.3...v1.5.4) (2023-04-19)
 
 
