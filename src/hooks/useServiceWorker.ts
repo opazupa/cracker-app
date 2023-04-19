@@ -30,9 +30,7 @@ export const useServiceWorker = () => {
           return;
         }
 
-        if (
-          confirm('A newer version of thie app is available, reload to update?')
-        ) {
+        if (confirm('A newer version is available 🚀, reload to update? 🤘')) {
           wb.addEventListener('controlling', () => {
             window.location.reload();
           });
