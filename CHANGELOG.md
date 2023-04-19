@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1](https://github.com/opazupa/cracker-app/compare/v1.5.0...v1.5.1) (2023-04-19)
+
+
+### Bug Fixes
+
+* page full height css ([2ae5be4](https://github.com/opazupa/cracker-app/commit/2ae5be40e8c6b37d4e4ef2b6398d80958bd21b54))
+* swipe to change meals for times of the day ([4d6263b](https://github.com/opazupa/cracker-app/commit/4d6263bd523b9abbcdbb7169d956b5b0b3713ac0))
+
 ## [1.5.0](https://github.com/opazupa/cracker-app/compare/v1.4.5...v1.5.0) (2023-04-18)
 
 
