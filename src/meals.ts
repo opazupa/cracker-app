@@ -1,9 +1,9 @@
-import { Category, Meal, Replacement } from './types';
+import { Category, Meal, Replacement, TimeOfTheDay } from './types';
 
 const Breakfast: Meal[] = [
   {
     name: 'Porridge',
-    group: 'breakfast',
+    group: 'morning',
     type: 'all',
     components: [
       { name: 'Oats (dry)', category: 'carbs', amount: 50, day5x: 1.25 },
@@ -15,7 +15,7 @@ const Breakfast: Meal[] = [
   },
   {
     name: 'Bread',
-    group: 'breakfast',
+    group: 'morning',
     type: 'all',
     components: [
       { name: 'Rye/Oat bread', category: 'carbs', amount: 60 },
@@ -33,7 +33,7 @@ const Breakfast: Meal[] = [
   },
   {
     name: 'Smoothie',
-    group: 'breakfast',
+    group: 'morning',
     type: 'all',
     components: [
       { name: 'Oats (dry)', category: 'carbs', amount: 30, day5x: 1.25 },
@@ -45,8 +45,10 @@ const Breakfast: Meal[] = [
   },
 ];
 
-const LunchOrDinner: Omit<Meal, 'name' | 'group'> = {
+const LunchOrDinner: Omit<Meal, 'name'> = {
   type: 'one-of',
+  group: 'afternoon',
+  includeVeggies: true,
   components: [
     // Carbs
     { name: 'Rice', category: 'carbs', amount: 150, day4x: 1.3, day5x: 1.6 },
@@ -104,7 +106,8 @@ const LunchOrDinner: Omit<Meal, 'name' | 'group'> = {
 const Snack: Meal[] = [
   {
     name: 'Snack',
-    group: 'snack',
+    group: 'afternoon',
+    includeVeggies: true,
     type: 'one-of',
     components: [
       // Carbs
@@ -236,12 +239,14 @@ const Evening: Meal[] = [
   },
 ];
 
-export const MEALS: Record<string, Meal[]> = {
-  Breakfast,
-  Lunch: [{ name: 'Lunch', group: 'lunch', ...LunchOrDinner }],
-  Snack,
-  Dinner: [{ name: 'Dinner', group: 'dinner', ...LunchOrDinner }],
-  Evening,
+export const MEALS: Record<TimeOfTheDay, Meal[][]> = {
+  Morning: [Breakfast],
+  Afternoon: [
+    [{ name: 'Lunch', ...LunchOrDinner }],
+    Snack,
+    [{ name: 'Dinner', ...LunchOrDinner }],
+  ],
+  Evening: [Evening],
 };
 
 export const REPLACEMENTS: Replacement[] = [

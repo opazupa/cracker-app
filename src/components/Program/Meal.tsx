@@ -11,17 +11,21 @@ import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
 import { Food, Meal as MealType } from '../../types';
-import {
-  calculateAmount,
-  celebrate,
-  convert,
-  isMain,
-  mealChecked,
-} from '../../utils';
+import { calculateAmount, celebrate, convert, mealChecked } from '../../utils';
 import CodeLink from '../CodeLink';
 import ReplaceModal from './ReplaceModal';
 
-export const MealComponent: React.FC<{
+const VeggiesComponent: React.FC<{ onChange: (isSelected: boolean) => void }> =
+  ({ onChange }) => (
+    <Container>
+      <Row align="center" css={{ gap: '$3' }}>
+        <Checkbox color="success" onChange={onChange} />
+        <code>150g+ Veggies 🥦</code>
+      </Row>
+    </Container>
+  );
+
+const MealComponent: React.FC<{
   component: Food;
   replacement?: Food;
   onCheck: (checked: boolean, component: Food) => void;
@@ -132,17 +136,13 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
         onReplace={onReplace}
         bindings={bindings}
       />
-      {isMain(meal) && meal.type === 'one-of' ? (
+      {meal.includeVeggies && (
+        <VeggiesComponent
+          onChange={(isSelected) => setVeggiesChecked(isSelected)}
+        />
+      )}
+      {meal.type === 'one-of' ? (
         <>
-          <Container>
-            <Row align="center" css={{ gap: '$3' }}>
-              <Checkbox
-                color="success"
-                onChange={(isSelected) => setVeggiesChecked(isSelected)}
-              />
-              <code>150g+ veggies 🥦</code>
-            </Row>
-          </Container>
           <ul>
             <Divider css={{ margin: '$5 0' }} />
             <Text b>Select one 🍠</Text>

@@ -1,8 +1,8 @@
 import confetti from 'canvas-confetti';
-import { differenceInDays } from 'date-fns';
+import { differenceInDays, getHours } from 'date-fns';
 
 import { CONVERSIONS } from '../meals';
-import { Food, Meal, ProgramDay } from '../types';
+import { Food, Meal, ProgramDay, TimeOfTheDay } from '../types';
 
 // TODO quick and dirty to start the count
 const START_DATE = new Date(2023, 3, 10); // 10.4.2023
@@ -15,6 +15,25 @@ export const getCurrentDay = (): ProgramDay => {
   else if (day === 5) return '5';
 
   throw new Error('Current date can`t be calculated :(');
+};
+
+export const getTimeOfTheDay = (): TimeOfTheDay => {
+  const hours = getHours(new Date());
+  if (hours < 11) return 'Morning';
+  if (hours < 20) return 'Afternoon';
+  return 'Evening';
+};
+
+export const nextTimeOfTheDay = (
+  current: TimeOfTheDay,
+  direction: 'left' | 'right' = 'right',
+): TimeOfTheDay => {
+  if (current === 'Morning' && direction === 'right') return 'Afternoon';
+  if (current === 'Afternoon')
+    return direction === 'right' ? 'Evening' : 'Morning';
+  if (current === 'Evening' && direction === 'left') return 'Afternoon';
+
+  return current;
 };
 
 export const celebrate = () => confetti({ origin: { x: 0.5, y: 1 } });
@@ -37,9 +56,6 @@ export const calculateAmount = (
     food.amount * (mealMultiplierPercentage / 100) * getDayMultiplier(),
   );
 };
-
-export const isMain = (meal: Meal) =>
-  ['lunch', 'snack', 'dinner'].includes(meal.group);
 
 export const mealChecked = (meal: Meal, checked: Food[]): boolean => {
   if (meal.type === 'one-of') {
