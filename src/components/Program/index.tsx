@@ -13,7 +13,7 @@ export const Program: React.FC<{ selectedTimeOfTheDay: TimeOfTheDay }> = ({
 
   return (
     <>
-      <Container display="flex" css={{ gap: '$1' }}>
+      <Container display="flex" css={{ gap: '$3' }}>
         <code>Day {programDay}</code>
         <code>x{mealMultiplierPercentage / 100}</code>
       </Container>
