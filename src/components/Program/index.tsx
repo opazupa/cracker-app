@@ -1,30 +1,18 @@
 import { Collapse, Container, Spacer } from '@nextui-org/react';
-import React, { useCallback, useState } from 'react';
-import { useSwipeable } from 'react-swipeable';
+import React from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
 import { MEALS } from '../../meals';
-import { getTimeOfTheDay, nextTimeOfTheDay } from '../../utils';
+import { TimeOfTheDay } from '../../types';
 import Meal from './Meal';
 
-export const Program = () => {
+export const Program: React.FC<{ selectedTimeOfTheDay: TimeOfTheDay }> = ({
+  selectedTimeOfTheDay,
+}) => {
   const { mealMultiplierPercentage, programDay } = useAppContext();
-  const [selectedTimeOfTheDay, setTimeOfTheDay] = useState(getTimeOfTheDay());
-
-  const handleSwipe = useCallback(
-    (direction: 'left' | 'right') => {
-      setTimeOfTheDay(nextTimeOfTheDay(selectedTimeOfTheDay, direction));
-    },
-    [selectedTimeOfTheDay],
-  );
-
-  const handlers = useSwipeable({
-    onSwipedLeft: () => handleSwipe('left'),
-    onSwipedRight: () => handleSwipe('right'),
-  });
 
   return (
-    <div {...handlers}>
+    <>
       <Container display="flex" css={{ gap: '$1' }}>
         <code>Day {programDay}</code>
         <code>x{mealMultiplierPercentage / 100}</code>
@@ -46,6 +34,6 @@ export const Program = () => {
           </Collapse.Group>
         ))}
       </Container>
-    </div>
+    </>
   );
 };
