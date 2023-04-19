@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.4](https://github.com/opazupa/cracker-app/compare/v1.5.3...v1.5.4) (2023-04-19)
+
+
+### Bug Fixes
+
+* swapped swipe direction to work correctly ([84082f1](https://github.com/opazupa/cracker-app/commit/84082f14c4dc37c7398c0f8a84ce07c2a07f836c))
+
 ## [1.5.3](https://github.com/opazupa/cracker-app/compare/v1.5.2...v1.5.3) (2023-04-19)
 
 
