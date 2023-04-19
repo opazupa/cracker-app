@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.3](https://github.com/opazupa/cracker-app/compare/v1.5.2...v1.5.3) (2023-04-19)
+
+
+### Bug Fixes
+
+* prevent scroll on swipe ([b00fa98](https://github.com/opazupa/cracker-app/commit/b00fa98cb2ec34e873dff0d4e8913b023a17ea18))
+* unify collapase groups between meals ([502e9b0](https://github.com/opazupa/cracker-app/commit/502e9b06b9ca689dfa33005995a6805a943fe3fe))
+
 ## [1.5.2](https://github.com/opazupa/cracker-app/compare/v1.5.1...v1.5.2) (2023-04-19)
 
 
