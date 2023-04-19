@@ -103,95 +103,93 @@ const LunchOrDinner: Omit<Meal, 'name'> = {
     { name: 'Avocado', category: 'fats', amount: 25 },
   ],
 };
-const Snack: Meal[] = [
-  {
-    name: 'Snack',
-    group: 'afternoon',
-    includeVeggies: true,
-    type: 'one-of',
-    components: [
-      // Carbs
-      {
-        name: 'Banana',
-        category: 'carbs',
-        amount: 180,
-        day4x: 1.3,
-        day5x: 1.6,
-      },
-      {
-        name: 'Rye/Oat bread',
-        category: 'carbs',
-        amount: 60,
-        day4x: 1.3,
-        day5x: 1.6,
-      },
-      {
-        name: 'Fruits',
-        category: 'carbs',
-        amount: 270,
-        day4x: 1.3,
-        day5x: 1.6,
-      },
-      {
-        name: 'Berries',
-        category: 'carbs',
-        amount: 300,
-        day4x: 1.3,
-        day5x: 1.6,
-      },
-      {
-        name: 'Rice cakes',
-        category: 'carbs',
-        amount: 45,
-        day4x: 1.3,
-        day5x: 1.6,
-      },
-      {
-        name: 'Oat porridge',
-        category: 'carbs',
-        amount: 270,
-        day4x: 1.3,
-        day5x: 1.6,
-      },
-      // Proteins
-      {
-        name: 'Cottage cheese (2%)',
-        category: 'proteins',
-        amount: 130,
-        day4x: 1.125,
-        day5x: 1.125,
-      },
-      {
-        name: 'Full meat cuts',
-        category: 'proteins',
-        amount: 110,
-        day4x: 1.125,
-        day5x: 1.125,
-      },
-      {
-        name: 'Qvark',
-        category: 'proteins',
-        amount: 150,
-        day4x: 1.125,
-        day5x: 1.125,
-      },
-      {
-        name: 'Skyr',
-        category: 'proteins',
-        amount: 175,
-        day4x: 1.125,
-        day5x: 1.125,
-      },
-      {
-        name: 'Hera powder',
-        category: 'proteins',
-        amount: 32,
-        day4x: 1.125,
-        day5x: 1.125,
-      },
-    ],
-  },
-];
+const Snack: Meal = {
+  name: 'Snack',
+  group: 'afternoon',
+  includeVeggies: true,
+  type: 'one-of',
+  components: [
+    // Carbs
+    {
+      name: 'Banana',
+      category: 'carbs',
+      amount: 180,
+      day4x: 1.3,
+      day5x: 1.6,
+    },
+    {
+      name: 'Rye/Oat bread',
+      category: 'carbs',
+      amount: 60,
+      day4x: 1.3,
+      day5x: 1.6,
+    },
+    {
+      name: 'Fruits',
+      category: 'carbs',
+      amount: 270,
+      day4x: 1.3,
+      day5x: 1.6,
+    },
+    {
+      name: 'Berries',
+      category: 'carbs',
+      amount: 300,
+      day4x: 1.3,
+      day5x: 1.6,
+    },
+    {
+      name: 'Rice cakes',
+      category: 'carbs',
+      amount: 45,
+      day4x: 1.3,
+      day5x: 1.6,
+    },
+    {
+      name: 'Oat porridge',
+      category: 'carbs',
+      amount: 270,
+      day4x: 1.3,
+      day5x: 1.6,
+    },
+    // Proteins
+    {
+      name: 'Cottage cheese (2%)',
+      category: 'proteins',
+      amount: 130,
+      day4x: 1.125,
+      day5x: 1.125,
+    },
+    {
+      name: 'Full meat cuts',
+      category: 'proteins',
+      amount: 110,
+      day4x: 1.125,
+      day5x: 1.125,
+    },
+    {
+      name: 'Qvark',
+      category: 'proteins',
+      amount: 150,
+      day4x: 1.125,
+      day5x: 1.125,
+    },
+    {
+      name: 'Skyr',
+      category: 'proteins',
+      amount: 175,
+      day4x: 1.125,
+      day5x: 1.125,
+    },
+    {
+      name: 'Hera powder',
+      category: 'proteins',
+      amount: 32,
+      day4x: 1.125,
+      day5x: 1.125,
+    },
+  ],
+};
 const Evening: Meal[] = [
   {
     name: 'Bread',
@@ -239,14 +237,14 @@ const Evening: Meal[] = [
   },
 ];
 
-export const MEALS: Record<TimeOfTheDay, Meal[][]> = {
-  Morning: [Breakfast],
+export const MEALS: Record<TimeOfTheDay, Meal[]> = {
+  Morning: Breakfast,
   Afternoon: [
-    [{ name: 'Lunch', ...LunchOrDinner }],
+    { name: 'Lunch', ...LunchOrDinner },
     Snack,
-    [{ name: 'Dinner', ...LunchOrDinner }],
+    { name: 'Dinner', ...LunchOrDinner },
   ],
-  Evening: [Evening],
+  Evening: Evening,
 };
 
 export const REPLACEMENTS: Replacement[] = [

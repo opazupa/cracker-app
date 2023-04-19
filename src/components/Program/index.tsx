@@ -24,15 +24,13 @@ export const Program: React.FC<{ selectedTimeOfTheDay: TimeOfTheDay }> = ({
         alignItems="flex-start"
         css={{ gap: '$10' }}
       >
-        {MEALS[selectedTimeOfTheDay].map((meals, i) => (
-          <Collapse.Group key={i} shadow css={{ minWidth: '100%' }}>
-            {meals.map((meal) => (
-              <Collapse key={meal.name} title={meal.name} subtitle={meal.group}>
-                <Meal meal={meal} />
-              </Collapse>
-            ))}
-          </Collapse.Group>
-        ))}
+        <Collapse.Group shadow css={{ minWidth: '100%' }}>
+          {MEALS[selectedTimeOfTheDay].map((meal) => (
+            <Collapse key={meal.name} title={meal.name} subtitle={meal.group}>
+              <Meal meal={meal} />
+            </Collapse>
+          ))}
+        </Collapse.Group>
       </Container>
     </>
   );
