@@ -168,7 +168,7 @@ const Snack: Meal = {
       day5x: 1.125,
     },
     {
-      name: 'Qvark',
+      name: 'Qvark (2%)',
       category: 'proteins',
       amount: 150,
       day4x: 1.125,
