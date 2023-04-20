@@ -25,4 +25,8 @@ export type Meal = {
   components: Food[];
 };
 
+export type Meals = Record<keyof typeof TimeOfTheDay, Meal[]>;
+
 export type Replacement = Pick<Food, 'name' | 'category'>;
+
+export type Conversions = Record<Category, Record<string, number>>;

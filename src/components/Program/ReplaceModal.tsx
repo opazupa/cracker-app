@@ -2,7 +2,7 @@ import { Button, Modal, Row, Text, useModal } from '@nextui-org/react';
 import React from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
-import { CONVERSIONS } from '../../meals';
+import { getConversions } from '../../services';
 import { Food, Replacement } from '../../types';
 import { convert } from '../../utils';
 import CodeLink from '../CodeLink';
@@ -22,6 +22,7 @@ const ReplaceModal: React.FC<
   };
 
   const amountToBeReplaced = calculateAmount(component);
+  const conversions = getConversions();
 
   return (
     <Modal
@@ -41,7 +42,7 @@ const ReplaceModal: React.FC<
       </Modal.Header>
       <Modal.Body>
         <ul>
-          {Object.keys(CONVERSIONS[component.category]).map((replacement) => {
+          {Object.keys(conversions[component.category]).map((replacement) => {
             const convertedAmount = convert(
               amountToBeReplaced,
               component.name,

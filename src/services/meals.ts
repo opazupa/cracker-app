@@ -1,4 +1,4 @@
-import { Category, Meal, Replacement, TimeOfTheDay } from './types';
+import { Conversions, Meal, Meals } from '../types';
 
 const Breakfast: Meal[] = [
   {
@@ -237,68 +237,63 @@ const Evening: Meal[] = [
   },
 ];
 
-export const MEALS: Record<keyof typeof TimeOfTheDay, Meal[]> = {
-  Morning: Breakfast,
-  Afternoon: [
-    { name: 'Lunch', ...LunchOrDinner },
-    Snack,
-    { name: 'Dinner', ...LunchOrDinner },
-  ],
-  Evening: Evening,
+export const getMeals = (): Meals => {
+  return {
+    Morning: Breakfast,
+    Afternoon: [
+      { name: 'Lunch', ...LunchOrDinner },
+      Snack,
+      { name: 'Dinner', ...LunchOrDinner },
+    ],
+    Evening: Evening,
+  };
 };
 
-export const REPLACEMENTS: Replacement[] = [
-  // Carbs
-  { name: 'Pineapple', category: 'carbs' },
-  // Proteins
-  { name: 'Qvark', category: 'proteins' },
-  // Fats
-  { name: 'Oil', category: 'fats' },
-];
-
-export const CONVERSIONS: Record<Category, Record<string, number>> = {
-  // Carbs (x rice)
-  carbs: {
-    Rice: 1,
-    Pasta: 0.7,
-    'Couscous/Qvinoa': 0.7,
-    Tortilla: 0.3,
-    'Oats (dry)': 0.3,
-    'Rice cakes': 0.3,
-    Fruits: 1.8,
-    Banana: 1.2,
-    Berries: 2,
-    Pineapple: 1.8,
-    Grapes: 1.5,
-    'Fruit piltti': 2,
-    'Rye/Oat bread': 0.4,
-    'Oat porridge': 1.8,
-  },
-  // Proteins (x chicken)
-  proteins: {
-    Chicken: 1,
-    'Beef (7%)': 1,
-    'Pork (10%)': 1,
-    Fish: 1,
-    Tuna: 1.1,
-    Shrimps: 1.5,
-    'Full meat cuts': 1.4,
-    'Cottage cheese (2%)': 1.6,
-    'Qvark (2%)': 1.9,
-    Skyr: 2.2,
-    'Protein pudding': 1.9,
-    'Hera powder': 0.4,
-    'Mifu slices': 0.6,
-    'Mifu grains': 1.1,
-    'Feta (5%)': 1.3,
-  },
-  // Fats (x oil)
-  fats: {
-    'Olive oil': 1,
-    'Coconut/Avocado oil': 1,
-    Avocado: 2.5,
-    Nuts: 2,
-    Seeds: 2,
-  },
-  extra: {},
+export const getConversions = (): Conversions => {
+  return {
+    // Carbs (x rice)
+    carbs: {
+      Rice: 1,
+      Pasta: 0.7,
+      'Couscous/Qvinoa': 0.7,
+      Tortilla: 0.3,
+      'Oats (dry)': 0.3,
+      'Rice cakes': 0.3,
+      Fruits: 1.8,
+      Banana: 1.2,
+      Berries: 2,
+      Pineapple: 1.8,
+      Grapes: 1.5,
+      'Fruit piltti': 2,
+      'Rye/Oat bread': 0.4,
+      'Oat porridge': 1.8,
+    },
+    // Proteins (x chicken)
+    proteins: {
+      Chicken: 1,
+      'Beef (7%)': 1,
+      'Pork (10%)': 1,
+      Fish: 1,
+      Tuna: 1.1,
+      Shrimps: 1.5,
+      'Full meat cuts': 1.4,
+      'Cottage cheese (2%)': 1.6,
+      'Qvark (2%)': 1.9,
+      Skyr: 2.2,
+      'Protein pudding': 1.9,
+      'Hera powder': 0.4,
+      'Mifu slices': 0.6,
+      'Mifu grains': 1.1,
+      'Feta (5%)': 1.3,
+    },
+    // Fats (x oil)
+    fats: {
+      'Olive oil': 1,
+      'Coconut/Avocado oil': 1,
+      Avocado: 2.5,
+      Nuts: 2,
+      Seeds: 2,
+    },
+    extra: {},
+  };
 };

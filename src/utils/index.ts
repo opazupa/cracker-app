@@ -1,7 +1,7 @@
 import confetti from 'canvas-confetti';
 import { differenceInDays, getHours } from 'date-fns';
 
-import { CONVERSIONS } from '../meals';
+import { getConversions } from '../services';
 import { Food, Meal, ProgramDay, TimeOfTheDay } from '../types';
 
 // TODO quick and dirty to start the count for program
@@ -64,10 +64,11 @@ export const convert = (
   from: string,
   to: string,
 ) => {
+  const conversions = getConversions();
   const flatMap = {
-    ...CONVERSIONS.carbs,
-    ...CONVERSIONS.fats,
-    ...CONVERSIONS.proteins,
+    ...conversions.carbs,
+    ...conversions.fats,
+    ...conversions.proteins,
   };
 
   if (!amount) return undefined;

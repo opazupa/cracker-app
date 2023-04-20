@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 
-import { getMealMultiplier, saveMealMultiplier } from '../persistence';
+import { getMealMultiplier, saveMealMultiplier } from '../services';
 import { Food, ProgramDay } from '../types';
 import { getCurrentDay, roundToNearest5 } from '../utils';
 
