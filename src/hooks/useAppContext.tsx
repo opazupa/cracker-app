@@ -24,12 +24,13 @@ interface State {
 export const AppContext = createContext<State | undefined>(undefined);
 
 export function AppContextProvider({ children }: PropsWithChildren<unknown>) {
-  const [programDay, setProgramDay] = useState(getCurrentDay());
+  const [programDay, setProgramDay] = useState<ProgramDay>('1-3');
   const [mealMultiplierPercentage, setMealMultiplier] = useState(100);
 
   // During hydration `useEffect` is called. `window` is available in `useEffect`. In this case because we know we're in the browser checking for window is not needed. If you need to read something from window that is fine.
   // By calling within `useEffect` a render is triggered after hydrating, this causes the "browser specific" value to be available.
   useEffect(() => {
+    setProgramDay(getCurrentDay());
     const savedValue = getMealMultiplier();
     if (savedValue) {
       setMealMultiplier(savedValue);
