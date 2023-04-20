@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/opazupa/cracker-app/compare/v1.6.0...v1.6.1) (2023-04-20)
+
+
+### Bug Fixes
+
+* multiplier on afteroon veggies ([fab586b](https://github.com/opazupa/cracker-app/commit/fab586b9a3f30dfc7a764398e7286a1e4a6bc1b5))
+
 ## [1.6.0](https://github.com/opazupa/cracker-app/compare/v1.5.5...v1.6.0) (2023-04-19)
 
 
