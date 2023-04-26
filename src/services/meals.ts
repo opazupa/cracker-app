@@ -67,7 +67,6 @@ const LunchOrDinner: Omit<Meal, 'name'> = {
       day5x: 1.6,
     },
     { name: 'Tortilla', category: 'carbs', amount: 50, day4x: 1.3, day5x: 1.6 },
-    { name: 'Potato', category: 'carbs', amount: 150, day4x: 1.3, day5x: 1.6 },
     // Proteins
     {
       name: 'Chicken',
@@ -257,6 +256,7 @@ export const getConversions = (): Conversions => {
       'Pasta/Noodle': 0.7,
       'Couscous/Qvinoa': 0.7,
       Tortilla: 0.3,
+      Potato: 1.4,
       'Oats (dry)': 0.3,
       'Rice cakes': 0.3,
       Fruits: 1.8,
