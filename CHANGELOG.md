@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.2](https://github.com/opazupa/cracker-app/compare/v1.6.1...v1.6.2) (2023-04-26)
+
+
+### Bug Fixes
+
+* conversion for pasta/noodles ([d840f26](https://github.com/opazupa/cracker-app/commit/d840f26dd7b02e3601c9f7d822faaa6920b72db8))
+* set lunch to start at 10 ([4e94764](https://github.com/opazupa/cracker-app/commit/4e9476474f1c2bd8208a61d81e31942dca5e7268))
+* typo in qvark snack name ([1c6e596](https://github.com/opazupa/cracker-app/commit/1c6e596d4fea09632250cb1d5e0d425449d5fc1b))
+
 ## [1.6.1](https://github.com/opazupa/cracker-app/compare/v1.6.0...v1.6.1) (2023-04-20)
 
 
