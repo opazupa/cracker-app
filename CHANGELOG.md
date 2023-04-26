@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/opazupa/cracker-app/compare/v1.6.2...v1.6.3) (2023-04-26)
+
+
+### Bug Fixes
+
+* added potato conversion ([98e5586](https://github.com/opazupa/cracker-app/commit/98e558698be222084b8e9abf0462e116aca1463e))
+
 ## [1.6.2](https://github.com/opazupa/cracker-app/compare/v1.6.1...v1.6.2) (2023-04-26)
 
 
