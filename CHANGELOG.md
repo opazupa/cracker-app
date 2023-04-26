@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.4](https://github.com/opazupa/cracker-app/compare/v1.6.3...v1.6.4) (2023-04-26)
+
+
+### Bug Fixes
+
+* added option set program start date ([bc00d68](https://github.com/opazupa/cracker-app/commit/bc00d68c965677bf24f679c912fbf16be13b753f))
+
 ## [1.6.3](https://github.com/opazupa/cracker-app/compare/v1.6.2...v1.6.3) (2023-04-26)
 
 
