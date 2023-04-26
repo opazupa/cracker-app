@@ -1,12 +1,4 @@
-import {
-  Checkbox,
-  Col,
-  Container,
-  Divider,
-  Row,
-  Text,
-  useModal,
-} from '@nextui-org/react';
+import { Checkbox, Col, Divider, Row, Text, useModal } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
@@ -19,12 +11,12 @@ const VeggiesComponent: React.FC<{ onChange: (isSelected: boolean) => void }> =
   ({ onChange }) => {
     const { mealMultiplierPercentage } = useAppContext();
     return (
-      <Container>
+      <ul>
         <Row align="center" css={{ gap: '$3' }}>
           <Checkbox color="success" onChange={onChange} />
           <code>{150 * (mealMultiplierPercentage / 100)}g+ Veggies 🥦</code>
         </Row>
-      </Container>
+      </ul>
     );
   };
 
