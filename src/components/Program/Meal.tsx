@@ -13,7 +13,7 @@ const VeggiesComponent: React.FC<{ onChange: (isSelected: boolean) => void }> =
     return (
       <ul>
         <Row align="center" css={{ gap: '$3' }}>
-          <Checkbox color="success" onChange={onChange} />
+          <Checkbox aria-label="checked" color="success" onChange={onChange} />
           <code>{150 * (mealMultiplierPercentage / 100)}g+ Veggies 🥦</code>
         </Row>
       </ul>
@@ -44,6 +44,7 @@ const MealComponent: React.FC<{
       <li>
         <Row align="center" css={{ gap: '$3' }}>
           <Checkbox
+            aria-label="checked"
             color="success"
             onChange={(isSelected) => onCheck(isSelected, component)}
           />

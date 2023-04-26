@@ -1,2 +1,2 @@
 export * from './meals';
-export * from './multiplier';
+export * from './program';

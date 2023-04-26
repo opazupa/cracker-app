@@ -4,6 +4,7 @@ import { DarkMode } from './DarkMode';
 import DayToggle from './DayToggle';
 import MealMultiplier from './MealMultiplier';
 import { Spinner } from './Spinner';
+import StartDate from './StartDate';
 
 export function Toolbar() {
   return (
@@ -23,6 +24,9 @@ export function Toolbar() {
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <DayToggle />
+          </Navbar.CollapseItem>
+          <Navbar.CollapseItem>
+            <StartDate />
           </Navbar.CollapseItem>
         </Navbar.Collapse>
       </Navbar.Content>

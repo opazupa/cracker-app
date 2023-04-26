@@ -1,21 +1,20 @@
 import confetti from 'canvas-confetti';
 import { differenceInDays, getHours } from 'date-fns';
 
-import { getConversions } from '../services';
+import { getConversions, getStartDate } from '../services';
 import { Food, Meal, ProgramDay, TimeOfTheDay } from '../types';
-
-// TODO quick and dirty to start the count for program
-const START_DATE = new Date(2023, 3, 10); // 10.4.2023
 
 /**
  * Get current program day
  */
 export const getCurrentDay = (): ProgramDay => {
-  const day = (differenceInDays(new Date(), START_DATE) + 1) % 5 || 5;
+  const startDate = getStartDate();
 
-  if (day <= 3) return '1-3';
-  else if (day === 4) return '4';
-  else if (day === 5) return '5';
+  const days = (differenceInDays(new Date(), startDate) + 1) % 5 || 5;
+
+  if (days <= 3) return '1-3';
+  else if (days === 4) return '4';
+  else if (days === 5) return '5';
 
   throw new Error('Current date can`t be calculated :(');
 };
