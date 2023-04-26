@@ -254,7 +254,7 @@ export const getConversions = (): Conversions => {
     // Carbs (x rice)
     carbs: {
       Rice: 1,
-      Pasta: 0.7,
+      'Pasta/Noodle': 0.7,
       'Couscous/Qvinoa': 0.7,
       Tortilla: 0.3,
       'Oats (dry)': 0.3,
