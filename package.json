@@ -1,7 +1,7 @@
 {
   "name": "cracker-app",
   "description": "A cracker app🍪",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "private": true,
   "author": "Opa (@opazupa)",
   "scripts": {
