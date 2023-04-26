@@ -25,7 +25,7 @@ export const getCurrentDay = (): ProgramDay => {
  */
 export const getMealForTimeOfTheDay = (): TimeOfTheDay => {
   const hours = getHours(new Date());
-  if (hours < 11) return TimeOfTheDay.Morning;
+  if (hours < 10) return TimeOfTheDay.Morning;
   if (hours < 20) return TimeOfTheDay.Afternoon;
   return TimeOfTheDay.Evening;
 };
