@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/opazupa/cracker-app/compare/v1.6.4...v1.7.0) (2024-01-17)
+
+
+### Features
+
+* :rocket: new cracker program meals ([42fd6db](https://github.com/opazupa/cracker-app/commit/42fd6db0182ff5c721b687318a1defe3ba213d63))
+
 ## [1.6.4](https://github.com/opazupa/cracker-app/compare/v1.6.3...v1.6.4) (2023-04-26)
 
 
