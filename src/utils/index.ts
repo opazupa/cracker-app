@@ -2,7 +2,7 @@ import confetti from 'canvas-confetti';
 import { differenceInDays, getHours } from 'date-fns';
 
 import { getConversions, getStartDate } from '../services';
-import { Food, Meal, ProgramDay, TimeOfTheDay } from '../types';
+import { Food, Ingredient, Meal, ProgramDay, TimeOfTheDay } from '../types';
 
 /**
  * Get current program day
@@ -60,8 +60,8 @@ export const mealChecked = (meal: Meal, checked: Food[]): boolean => {
  */
 export const convert = (
   amount: number | null | undefined,
-  from: string,
-  to: string,
+  from: Ingredient,
+  to: Ingredient,
 ) => {
   const conversions = getConversions();
   const flatMap = {
@@ -70,8 +70,11 @@ export const convert = (
     ...conversions.proteins,
   };
 
-  if (!amount) return undefined;
-  if (!flatMap[from] || !flatMap[to]) return undefined;
+  const fromMultiplier = flatMap[from];
+  const toMultiplier = flatMap[to];
 
-  return roundToNearest5((amount / flatMap[from]) * flatMap[to]);
+  if (!amount) return undefined;
+  if (!fromMultiplier || !toMultiplier) return undefined;
+
+  return roundToNearest5((amount / fromMultiplier) * toMultiplier);
 };

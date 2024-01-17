@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
 import { getConversions } from '../../services';
-import { Food, Replacement } from '../../types';
+import { Food, Ingredient, Replacement } from '../../types';
 import { convert } from '../../utils';
 import CodeLink from '../CodeLink';
 
@@ -42,29 +42,37 @@ const ReplaceModal: React.FC<
       </Modal.Header>
       <Modal.Body>
         <ul>
-          {Object.keys(conversions[component.category]).map((replacement) => {
-            const convertedAmount = convert(
-              amountToBeReplaced,
-              component.name,
-              replacement,
-            );
-            return (
-              <li key={replacement}>
-                <Row align="center" justify="space-between" css={{ gap: '$3' }}>
-                  {convertedAmount ? `${convertedAmount}g` : '-'} {replacement}
-                  <CodeLink
-                    text="replace"
-                    onClick={() =>
-                      handleReplace({
-                        name: replacement,
-                        category: component.category,
-                      })
-                    }
-                  />
-                </Row>
-              </li>
-            );
-          })}
+          {(Object.keys(conversions[component.category]) as Ingredient[]).map(
+            (replacement) => {
+              const convertedAmount = convert(
+                amountToBeReplaced,
+                component.name,
+                replacement,
+              );
+              // if (!convertedAmount) return <li>missing codnersion :(</li>;
+              return (
+                <li key={replacement}>
+                  <Row
+                    align="center"
+                    justify="space-between"
+                    css={{ gap: '$3' }}
+                  >
+                    {convertedAmount ? `${convertedAmount}g` : '-'}{' '}
+                    {replacement}
+                    <CodeLink
+                      text="replace"
+                      onClick={() =>
+                        handleReplace({
+                          name: replacement,
+                          category: component.category,
+                        })
+                      }
+                    />
+                  </Row>
+                </li>
+              );
+            },
+          )}
         </ul>
       </Modal.Body>
       <Modal.Footer>
