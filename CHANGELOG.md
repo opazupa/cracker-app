@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.2](https://github.com/opazupa/cracker-app/compare/v2.0.1...v2.0.2) (2024-01-24)
+
+
+### Bug Fixes
+
+* favicon ico styling ([f08fe8c](https://github.com/opazupa/cracker-app/commit/f08fe8cb3ff571fbeaa3d7e64d306847a7eed9f4))
+
+
+### Miscellaneous Chores
+
+* release 2.0.2 ([370a0b7](https://github.com/opazupa/cracker-app/commit/370a0b795aa690abaee6235f820766316ebb139f))
+
 ## [2.0.1](https://github.com/opazupa/cracker-app/compare/v2.0.0...v2.0.1) (2024-01-24)
 
 
