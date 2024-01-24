@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/opazupa/cracker-app/compare/v2.0.2...v2.0.3) (2024-01-24)
+
+
+### Bug Fixes
+
+* icon work for iphone ([57be5ca](https://github.com/opazupa/cracker-app/commit/57be5ca89e1320efe94fcf7989e465c6dbbc81d6))
+
 ## [2.0.2](https://github.com/opazupa/cracker-app/compare/v2.0.1...v2.0.2) (2024-01-24)
 
 
