@@ -1,8 +1,8 @@
 {
   "name": "Cracker app🍪",
   "short_name": "Cracker app🍪",
-  "theme_color": "#787f85",
-  "background_color": "#787f85",
+  "theme_color": "#dad7cd",
+  "background_color": "#dad7cd",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
