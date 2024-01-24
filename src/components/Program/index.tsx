@@ -37,7 +37,7 @@ export const Program: React.FC<{ meals: Meals }> = ({ meals }) => {
           >
             {Object.entries(meals).map(([group, options]) => (
               <SwiperSlide key={group}>
-                <Collapse.Group shadow>
+                <Collapse.Group splitted style={{ padding: 0 }}>
                   {options.map((meal) => (
                     <Collapse
                       key={meal.name}

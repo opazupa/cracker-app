@@ -1,4 +1,4 @@
-import { Input, Row } from '@nextui-org/react';
+import { Input } from '@nextui-org/react';
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 
@@ -12,23 +12,21 @@ const StartDate: React.FC = () => {
   }, []);
 
   return (
-    <Row align="center">
-      <Input
-        label="Program start date"
-        color="primary"
-        type="date"
-        value={date}
-        bordered
-        shadow={false}
-        required
-        onChange={({ target }) => {
-          if (target.value) {
-            setDate(target.value);
-            saveStartDate(target.value);
-          }
-        }}
-      />
-    </Row>
+    <Input
+      label="Program start date"
+      color="primary"
+      type="date"
+      value={date}
+      bordered
+      shadow={false}
+      required
+      onChange={({ target }) => {
+        if (target.value) {
+          setDate(target.value);
+          saveStartDate(target.value);
+        }
+      }}
+    />
   );
 };
 

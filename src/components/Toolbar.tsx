@@ -1,4 +1,4 @@
-import { Navbar, Text } from '@nextui-org/react';
+import { Navbar, Row, Text } from '@nextui-org/react';
 
 import { DarkMode } from './DarkMode';
 import DayToggle from './DayToggle';
@@ -11,22 +11,22 @@ export function Toolbar() {
     <Navbar height={60} variant="floating">
       <Navbar.Brand>
         <Text h3 css={{ marginBottom: 0 }}>
-          Let´s crack
+          Crack it
           <Spinner />
         </Text>
       </Navbar.Brand>
       <Navbar.Content>
+        <DarkMode />
         <Navbar.Toggle aria-label="toggle-menu" />
         <Navbar.Collapse css={{ marginTop: '-$5' }}>
           <Navbar.CollapseItem>
-            <DarkMode />
-            <MealMultiplier />
+            <Row align="flex-end" justify="space-between">
+              <StartDate />
+              <MealMultiplier />
+            </Row>
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <DayToggle />
-          </Navbar.CollapseItem>
-          <Navbar.CollapseItem>
-            <StartDate />
           </Navbar.CollapseItem>
         </Navbar.Collapse>
       </Navbar.Content>

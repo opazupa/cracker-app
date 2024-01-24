@@ -1,4 +1,4 @@
-import { Button, Row } from '@nextui-org/react';
+import { Button, Row, Text } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 
 import { PROGRAM_DAYS, useAppContext } from '../hooks/useAppContext';
@@ -14,8 +14,8 @@ const DayToggle: React.FC = () => {
 
   return (
     selected && (
-      <Row align="center">
-        Program day
+      <Row align="center" justify="flex-end">
+        <Text>Program day</Text>
         <Button.Group color="primary">
           {PROGRAM_DAYS.map((day) => (
             <Button

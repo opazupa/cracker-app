@@ -1,4 +1,4 @@
-import { Dropdown, Row } from '@nextui-org/react';
+import { Dropdown } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../hooks/useAppContext';
@@ -29,28 +29,26 @@ const MealMultiplier: React.FC = () => {
   };
 
   return (
-    <Row align="center">
-      <Dropdown>
-        <Dropdown.Button color="primary">
-          {mealMultiplierPercentage / 100} x meal
-        </Dropdown.Button>
-        <Dropdown.Menu
-          aria-label="Meal multiplier"
-          items={MULTIPLIERS}
-          disallowEmptySelection
-          selectionMode="single"
-          selectedKeys={selected}
-          textColor="primary"
-          onSelectionChange={handleSelection}
-        >
-          {(item) => (
-            <Dropdown.Item key={(item as MenuItem).key}>
-              {(item as MenuItem).name}
-            </Dropdown.Item>
-          )}
-        </Dropdown.Menu>
-      </Dropdown>
-    </Row>
+    <Dropdown>
+      <Dropdown.Button color="primary">
+        {mealMultiplierPercentage / 100} x meal
+      </Dropdown.Button>
+      <Dropdown.Menu
+        aria-label="Meal multiplier"
+        items={MULTIPLIERS}
+        disallowEmptySelection
+        selectionMode="single"
+        selectedKeys={selected}
+        textColor="primary"
+        onSelectionChange={handleSelection}
+      >
+        {(item) => (
+          <Dropdown.Item key={(item as MenuItem).key}>
+            {(item as MenuItem).name}
+          </Dropdown.Item>
+        )}
+      </Dropdown.Menu>
+    </Dropdown>
   );
 };
 

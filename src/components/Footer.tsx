@@ -29,7 +29,6 @@ export function Footer() {
         <div>
           <span>Coded with</span>
           <Text onClick={celebrate}>😈</Text>
-          <span>-Opa</span>
         </div>
         <code>v{pkg.version}</code>
       </footer>

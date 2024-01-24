@@ -49,7 +49,7 @@ const ReplaceModal: React.FC<
                 component.name,
                 replacement,
               );
-              // if (!convertedAmount) return <li>missing codnersion :(</li>;
+              if (!convertedAmount) return <li>missing codnersion :(</li>;
               return (
                 <li key={replacement}>
                   <Row
