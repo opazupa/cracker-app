@@ -1,6 +1,6 @@
 {
-  "name": "Cracker app",
-  "short_name": "Cracker app",
+  "name": "Cracker app🍪",
+  "short_name": "Cracker app🍪",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "fullscreen",
@@ -9,28 +9,18 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "icons/icon-72x72.png",
-      "sizes": "72x72",
+      "src": "icons/icon-32x32.png",
+      "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-100x100.png",
-      "sizes": "100x100",
+      "src": "icons/icon-64x64.png",
+      "sizes": "64x64",
       "type": "image/png"
     },
     {
       "src": "icons/icon-128x128.png",
       "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-152x152.png",
-      "sizes": "152x152",
       "type": "image/png"
     },
     {
