@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/opazupa/cracker-app/compare/v2.0.0...v2.0.1) (2024-01-24)
+
+
+### Miscellaneous Chores
+
+* release 2.0.1 ([6ebb279](https://github.com/opazupa/cracker-app/commit/6ebb279e336885ab3054d47ca9c726bf3deeccc4))
+
 ## [2.0.0](https://github.com/opazupa/cracker-app/compare/v1.7.0...v2.0.0) (2024-01-24)
 
 
