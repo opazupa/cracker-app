@@ -38,7 +38,7 @@ export default function CrackerApp({ Component, pageProps }: AppProps) {
           sizes="32x32"
         />
         <link rel="apple-touch-icon" href="icons/apple-icon.png"></link>
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#787f85" />
       </Head>
       <SSRProvider>
         <NextThemesProvider
