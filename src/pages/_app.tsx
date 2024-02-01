@@ -25,17 +25,12 @@ export default function CrackerApp({ Component, pageProps }: AppProps) {
         <title>Cracker app🍪</title>
 
         <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="favicon.ico"></link>
         <link
-          href="/icons/icon-16x16.png"
+          href="/icons/icon-48x48.png"
           rel="icon"
           type="image/png"
-          sizes="16x16"
-        />
-        <link
-          href="/icons/icon-32x32.png"
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
+          sizes="48x48"
         />
         <link rel="apple-touch-icon" href="icons/icon-144x144.png"></link>
         <meta name="theme-color" content="#dad7cd" />
