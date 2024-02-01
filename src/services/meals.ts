@@ -68,7 +68,7 @@ const Breakfast: Meal[] = [
     group: 'morning',
     type: 'all',
     components: [
-      { name: 'Oats (dry)', category: 'carbs', amount: 10 },
+      { name: 'Oats (dry)', category: 'carbs', amount: 15 },
       {
         name: 'Qvark (2%)',
         category: 'proteins',
@@ -79,7 +79,7 @@ const Breakfast: Meal[] = [
       {
         name: 'Berries',
         category: 'carbs',
-        amount: 145,
+        amount: 100,
         day4x: 1.14,
         day5x: 1.2,
       },
