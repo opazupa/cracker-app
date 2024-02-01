@@ -78,3 +78,10 @@ export const convert = (
 
   return roundToNearest5((amount / fromMultiplier) * toMultiplier);
 };
+
+/**
+ * Get random number between values
+ */
+export const random = (min: number, max: number) => {
+  return Math.random() * (max - min) + min;
+};

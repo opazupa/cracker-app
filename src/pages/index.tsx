@@ -6,6 +6,7 @@ import { useTimeout } from '../hooks/useTimeout';
 import { getMeals } from '../services';
 import styles from '../styles/Home.module.css';
 import { Meals } from '../types';
+import { random } from '../utils';
 
 type HomeProps = {
   meals: Meals;
@@ -22,7 +23,8 @@ export const getStaticProps = async (): Promise<
 };
 
 export default function Home({ meals }: HomeProps) {
-  const ready = useTimeout();
+  // Be ready between 1 - 2,5 seconds
+  const ready = useTimeout(random(1000, 2500));
 
   return (
     <Container className={styles.container}>
