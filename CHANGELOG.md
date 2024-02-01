@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/opazupa/cracker-app/compare/v2.0.3...v2.1.0) (2024-02-01)
+
+
+### Features
+
+* app loader on startup ([85cf82b](https://github.com/opazupa/cracker-app/commit/85cf82b670167cac67e945254b01c08419ddd60f))
+
+
+### Bug Fixes
+
+* changed berries into morning oats ([6c857a6](https://github.com/opazupa/cracker-app/commit/6c857a6271abbe6eda26bc3613b362e86a42bbec))
+
 ## [2.0.3](https://github.com/opazupa/cracker-app/compare/v2.0.2...v2.0.3) (2024-01-24)
 
 
