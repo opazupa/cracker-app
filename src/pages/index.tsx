@@ -1,4 +1,4 @@
-import { Container } from '@nextui-org/react';
+import { Container, Row, Text } from '@nextui-org/react';
 import { GetStaticPropsResult } from 'next';
 
 import { Footer, Program, Toolbar } from '../components';
@@ -36,7 +36,14 @@ export default function Home({ meals }: HomeProps) {
           </main>
         </>
       ) : (
-        <div className={styles.loader} />
+        <Row
+          justify="center"
+          align="flex-end"
+          css={{ gap: '$3', paddingLeft: '$10' }}
+        >
+          <Text h2>Cracker App</Text>
+          <div className={styles.loader} />
+        </Row>
       )}
       <Footer />
     </Container>
