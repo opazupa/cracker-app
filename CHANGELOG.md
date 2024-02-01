@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/opazupa/cracker-app/compare/v2.1.0...v2.2.0) (2024-02-01)
+
+
+### Features
+
+* random loading time ([abb78ec](https://github.com/opazupa/cracker-app/commit/abb78ec3fe12384750bd97b7badc1e6f658de07e))
+
 ## [2.1.0](https://github.com/opazupa/cracker-app/compare/v2.0.3...v2.1.0) (2024-02-01)
 
 
