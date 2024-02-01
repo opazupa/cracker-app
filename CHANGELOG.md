@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/opazupa/cracker-app/compare/v2.2.0...v2.2.1) (2024-02-01)
+
+
+### Bug Fixes
+
+* added app name to loading screen ([22c4828](https://github.com/opazupa/cracker-app/commit/22c4828e45256b0b02a639f0d6d431115f36acb5))
+
 ## [2.2.0](https://github.com/opazupa/cracker-app/compare/v2.1.0...v2.2.0) (2024-02-01)
 
 
