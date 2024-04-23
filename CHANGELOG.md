@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/opazupa/cracker-app/compare/v2.2.1...v2.3.0) (2024-04-23)
+
+
+### Features
+
+* added tofu to protein options ([d067560](https://github.com/opazupa/cracker-app/commit/d067560d63de625bae59e6e3e671ebfd4c4795c0))
+
 ## [2.2.1](https://github.com/opazupa/cracker-app/compare/v2.2.0...v2.2.1) (2024-02-01)
 
 
