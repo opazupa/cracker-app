@@ -145,6 +145,13 @@ const LunchOrDinner: Omit<Meal, 'name'> = {
       day5x: 1.16,
     },
     {
+      name: 'Tofu',
+      category: 'proteins',
+      amount: 90,
+      day4x: 1.05,
+      day5x: 1.16,
+    },
+    {
       name: 'Beef (7%)',
       category: 'proteins',
       amount: 85,
@@ -405,6 +412,7 @@ export const getConversions = (): Conversions => {
       Chicken: 1,
       'Beef (7%)': 1,
       'Pork (10%)': 1,
+      Tofu: 0.95,
       Fish: 1,
       Tuna: 1.1,
       Shrimps: 1.5,

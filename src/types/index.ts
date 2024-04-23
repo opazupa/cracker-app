@@ -23,7 +23,7 @@ export type Ingredient =
   | 'Fruit piltti'
   | 'Rye/Oat bread'
   | 'Oat porridge'
-  // Proteins (x chicken)proteins
+  // Proteins
   | 'Chicken'
   | 'Beef (7%)'
   | 'Pork (10%)'
@@ -42,6 +42,7 @@ export type Ingredient =
   | 'Skinned milk'
   | 'Egg'
   | 'Cheese (17%)'
+  | 'Tofu'
   // Fats (x oil)
   | 'Olive oil'
   | 'Olives'
