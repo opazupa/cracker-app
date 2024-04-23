@@ -5,7 +5,7 @@ on:
     inputs:
       force_release:
         description: force deployment
-        default: "false"
+        default: 'false'
         required: false
   push:
     branches:
@@ -38,4 +38,3 @@ jobs:
     with:
       environment: prod
     secrets: inherit
-

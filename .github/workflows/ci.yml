@@ -1,11 +1,11 @@
 name: CI check
 
 on:
-    pull_request:
-      branches:
-        - 'main'
-        - '!release-please-*'
-    workflow_call:
+  pull_request:
+    branches:
+      - 'main'
+      - '!release-please-*'
+  workflow_call:
 
 jobs:
   run-ci:
@@ -19,8 +19,8 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-            node-version: 16
-            cache: 'yarn'
+          node-version: 20
+          cache: 'yarn'
 
       - name: Yarn install
         run: yarn install --frozen-lockfile
