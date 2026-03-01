@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.1](https://github.com/opazupa/cracker-app/compare/v2.3.0...v2.3.1) (2026-03-01)
+
+
+### Bug Fixes
+
+* change spinner to work in safari ([59a4290](https://github.com/opazupa/cracker-app/commit/59a429088fd17effdba686ac0264774089c1db76))
+
 ## [2.3.0](https://github.com/opazupa/cracker-app/compare/v2.2.1...v2.3.0) (2024-04-23)
 
 
