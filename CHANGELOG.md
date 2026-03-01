@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.2](https://github.com/opazupa/cracker-app/compare/v2.3.1...v2.3.2) (2026-03-01)
+
+
+### Bug Fixes
+
+* use unoptimized image ([6db70ab](https://github.com/opazupa/cracker-app/commit/6db70ab32c7363b702e556e130ddec67722013be))
+
 ## [2.3.1](https://github.com/opazupa/cracker-app/compare/v2.3.0...v2.3.1) (2026-03-01)
 
 
