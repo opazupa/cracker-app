@@ -38,6 +38,7 @@ export const Spinner: React.FC<{ size?: number }> = ({ size = 40 }) => {
           style={{
             display: 'block', // important for correct rotation
           }}
+          unoptimized
         />
       </div>
     </>
