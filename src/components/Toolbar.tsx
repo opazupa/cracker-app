@@ -10,10 +10,12 @@ export function Toolbar() {
   return (
     <Navbar height={60} variant="floating">
       <Navbar.Brand>
-        <Text h3 css={{ marginBottom: 0 }}>
-          Crack it
-          <Spinner />
-        </Text>
+        <Row align="center">
+          <Text h3 css={{ marginBottom: 0, marginRight: '$2' }}>
+            Crack it
+          </Text>
+          <Spinner size={25} />
+        </Row>
       </Navbar.Brand>
       <Navbar.Content>
         <DarkMode />

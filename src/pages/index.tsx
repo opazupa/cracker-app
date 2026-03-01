@@ -1,7 +1,7 @@
 import { Container, Row, Text } from '@nextui-org/react';
 import { GetStaticPropsResult } from 'next';
 
-import { Footer, Program, Toolbar } from '../components';
+import { Footer, Program, Spinner, Toolbar } from '../components';
 import { useTimeout } from '../hooks/useTimeout';
 import { getMeals } from '../services';
 import styles from '../styles/Home.module.css';
@@ -38,11 +38,11 @@ export default function Home({ meals }: HomeProps) {
       ) : (
         <Row
           justify="center"
-          align="flex-end"
-          css={{ gap: '$3', paddingLeft: '$10' }}
+          align="center"
+          css={{ gap: '$5', paddingLeft: '$10' }}
         >
           <Text h2>Cracker App</Text>
-          <div className={styles.loader} />
+          <Spinner />
         </Row>
       )}
       <Footer />

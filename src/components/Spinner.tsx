@@ -1,14 +1,16 @@
+import Image from 'next/image';
 import React from 'react';
 
-export function Spinner() {
+import cookieImg from '/public/img/cookie.png';
+
+export const Spinner: React.FC<{ size?: number }> = ({ size = 40 }) => {
   return (
     <>
       <style jsx>{`
         .loader {
-          position: absolute;
-          -webkit-animation: spin 2.5s linear infinite;
-          -moz-animation: spin 2.5s linear infinite;
-          animation: spin 2.5s linear infinite;
+          -webkit-animation: spin 3s linear infinite;
+          -moz-animation: spin 3s linear infinite;
+          animation: spin 3s linear infinite;
         }
         @-moz-keyframes spin {
           100% {
@@ -27,7 +29,17 @@ export function Spinner() {
           }
         }
       `}</style>
-      <span className="loader">🍪</span>
+      <div className="loader">
+        <Image
+          alt="loader"
+          src={cookieImg}
+          width={size}
+          height={size}
+          style={{
+            display: 'block', // important for correct rotation
+          }}
+        />
+      </div>
     </>
   );
-}
+};
