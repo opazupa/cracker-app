@@ -1,35 +1,53 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-const mockSetProgramDay = jest.fn();
-
 jest.mock('../hooks/useAppContext', () => ({
-  useAppContext: jest.fn().mockReturnValue({
-    programDay: '1-3',
-    setProgramDay: mockSetProgramDay,
-  }),
+  useAppContext: jest.fn(),
   PROGRAM_DAYS: ['1-3', '4', '5'],
 }));
 
 jest.mock('@nextui-org/react', () => {
-  const Button = ({ children, onPress, light }: any) => (
+  const Button = ({
+    children,
+    onPress,
+    light,
+  }: {
+    children: React.ReactNode;
+    onPress: () => void;
+    light?: boolean;
+  }) => (
     <button onClick={onPress} data-selected={!light}>
       {children}
     </button>
   );
   // eslint-disable-next-line react/display-name
-  Button.Group = ({ children }: any) => <div role="group">{children}</div>;
+  Button.Group = ({ children }: { children: React.ReactNode }) => (
+    <div role="group">{children}</div>
+  );
   return {
     Button,
-    Row: ({ children }: any) => <div>{children}</div>,
-    Text: ({ children }: any) => <span>{children}</span>,
+    Row: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+    Text: ({ children }: { children: React.ReactNode }) => (
+      <span>{children}</span>
+    ),
   };
 });
 
+import { useAppContext } from '../hooks/useAppContext';
 import DayToggle from './DayToggle';
 
+const mockUseAppContext = jest.mocked(useAppContext);
+
 describe('DayToggle', () => {
-  beforeEach(() => jest.clearAllMocks());
+  const mockSetProgramDay = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockUseAppContext.mockReturnValue({
+      programDay: '1-3',
+      setProgramDay: mockSetProgramDay,
+    } as unknown as ReturnType<typeof useAppContext>);
+  });
 
   it('renders a button for each program day', () => {
     render(<DayToggle />);

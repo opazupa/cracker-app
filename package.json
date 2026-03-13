@@ -63,7 +63,7 @@
     "lint-staged": "12.1.2",
     "prettier": "2.4.1",
     "ts-jest": "^29.4.6",
-    "typescript": "4.5.4"
+    "typescript": "4.8"
   },
   "config": {
     "commitizen": {

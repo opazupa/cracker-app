@@ -6,6 +6,7 @@ import { Spinner } from './Spinner';
 jest.mock('next/image', () => ({
   __esModule: true,
   default: ({ alt, width, height }: any) => (
+    // eslint-disable-next-line @next/next/no-img-element
     <img alt={alt} width={width} height={height} />
   ),
 }));
