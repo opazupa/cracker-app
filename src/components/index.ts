@@ -1,3 +1,4 @@
+export * from './MealCount';
 export * from './Program';
 export * from './Footer';
 export * from './Spinner';

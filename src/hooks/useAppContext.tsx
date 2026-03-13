@@ -8,7 +8,12 @@ import React, {
   useState,
 } from 'react';
 
-import { getMealMultiplier, saveMealMultiplier } from '../services';
+import {
+  getCompletedMeals,
+  getMealMultiplier,
+  saveCompletedMeals,
+  saveMealMultiplier,
+} from '../services';
 import { Food, ProgramDay } from '../types';
 import { getCurrentDay, roundToNearest5 } from '../utils';
 
@@ -19,6 +24,9 @@ interface State {
   setMealMultiplier: (x: number) => void;
   setProgramDay: (day: ProgramDay) => void;
   calculateAmount: (food: Food) => number | null;
+  completedMealNames: string[];
+  // DEBT: no UI to un-complete a meal; only add is supported for now.
+  toggleMealComplete: (mealName: string) => void;
 }
 
 export const AppContext = createContext<State | undefined>(undefined);
@@ -26,6 +34,7 @@ export const AppContext = createContext<State | undefined>(undefined);
 export function AppContextProvider({ children }: PropsWithChildren<unknown>) {
   const [programDay, setProgramDay] = useState<ProgramDay>('1-3');
   const [mealMultiplierPercentage, setMealMultiplier] = useState(100);
+  const [completedMealNames, setCompletedMealNames] = useState<string[]>([]);
 
   // During hydration `useEffect` is called. `window` is available in `useEffect`. In this case because we know we're in the browser checking for window is not needed. If you need to read something from window that is fine.
   // By calling within `useEffect` a render is triggered after hydrating, this causes the "browser specific" value to be available.
@@ -35,6 +44,9 @@ export function AppContextProvider({ children }: PropsWithChildren<unknown>) {
     if (savedValue) {
       setMealMultiplier(savedValue);
     }
+    // DEBT: completedMealNames is not reset at midnight if the app is left open.
+    // A visibility-change listener or daily re-sync would fix this.
+    setCompletedMealNames(getCompletedMeals());
   }, []);
 
   /**
@@ -56,6 +68,14 @@ export function AppContextProvider({ children }: PropsWithChildren<unknown>) {
     [mealMultiplierPercentage, programDay],
   );
 
+  const toggleMealComplete = useCallback((mealName: string) => {
+    setCompletedMealNames((prev) => {
+      const next = Array.from(new Set([...prev, mealName]));
+      saveCompletedMeals(next);
+      return next;
+    });
+  }, []);
+
   const value = useMemo<State>(
     () => ({
       programDay,
@@ -67,8 +87,16 @@ export function AppContextProvider({ children }: PropsWithChildren<unknown>) {
       },
       setProgramDay,
       calculateAmount,
+      completedMealNames,
+      toggleMealComplete,
     }),
-    [calculateAmount, mealMultiplierPercentage, programDay],
+    [
+      calculateAmount,
+      completedMealNames,
+      mealMultiplierPercentage,
+      programDay,
+      toggleMealComplete,
+    ],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

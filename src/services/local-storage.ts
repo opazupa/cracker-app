@@ -3,6 +3,7 @@ const PREFIX = 'cracker.app';
 export const KEYS = {
   MULTIPLIER: `${PREFIX}.multiplier`,
   START_DATE: `${PREFIX}.start_date`,
+  COMPLETED_MEALS: `${PREFIX}.completed_meals`,
 } as const;
 
 export type Key = typeof KEYS[keyof typeof KEYS];

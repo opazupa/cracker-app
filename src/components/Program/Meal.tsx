@@ -110,15 +110,18 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
     setReplacements({ ...replacements, [toReplace]: replacement });
   };
 
+  const { toggleMealComplete } = useAppContext();
+
   useEffect(() => {
-    if (
+    const complete =
       mealChecked(meal, checkedFoods) &&
       // Require veggies for 'all' type of meals
-      (meal.type === 'all' || veggiesChecked)
-    ) {
+      (meal.type === 'all' || veggiesChecked);
+    if (complete) {
       celebrate();
+      toggleMealComplete(meal.name);
     }
-  }, [checkedFoods, meal, veggiesChecked]);
+  }, [checkedFoods, meal, veggiesChecked, toggleMealComplete]);
 
   return (
     <>

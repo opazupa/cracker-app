@@ -2,6 +2,10 @@ import { formatISO, parseISO } from 'date-fns';
 
 import { get, KEYS, save } from './local-storage';
 
+const todayISO = () => new Date().toISOString().slice(0, 10);
+
+type CompletedMealsStore = { date: string; names: string[] };
+
 export const saveMealMultiplier = (multiplier: number) => {
   save(KEYS.MULTIPLIER, multiplier);
 };
@@ -12,6 +16,15 @@ export const getMealMultiplier = () => {
 
 export const saveStartDate = (dateString: string) => {
   save(KEYS.START_DATE, formatISO(new Date(dateString)));
+};
+
+export const saveCompletedMeals = (names: string[]) =>
+  save(KEYS.COMPLETED_MEALS, { date: todayISO(), names });
+
+export const getCompletedMeals = (): string[] => {
+  const stored = get<CompletedMealsStore>(KEYS.COMPLETED_MEALS);
+  if (!stored || stored.date !== todayISO()) return [];
+  return stored.names;
 };
 
 export const getStartDate = (): Date => {

@@ -30,14 +30,15 @@ jest.mock('../../utils', () => ({
 }));
 
 jest.mock('../../hooks/useAppContext', () => ({
-  useAppContext: jest.fn().mockReturnValue({
-    calculateAmount: (food: any) => food.amount ?? null,
-    mealMultiplierPercentage: 100,
-  }),
+  useAppContext: jest.fn(),
 }));
 
+import { useAppContext } from '../../hooks/useAppContext';
 import Meal from './Meal';
 import { celebrate } from '../../utils';
+
+const mockUseAppContext = jest.mocked(useAppContext);
+const mockToggleMealComplete = jest.fn();
 
 // ─── Fixtures ─────────────────────────────────────────────────────────────────
 
@@ -66,7 +67,19 @@ const oneOfMeal: MealType = {
 // ─── type 'all' ───────────────────────────────────────────────────────────────
 
 describe("Meal type 'all'", () => {
-  beforeEach(() => jest.clearAllMocks());
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockUseAppContext.mockReturnValue({
+      programDay: '1-3',
+      mealMultiplierPercentage: 100,
+      setMealMultiplier: jest.fn(),
+      setProgramDay: jest.fn(),
+      completedMealNames: [],
+      calculateAmount: (food: MealType['components'][number]) =>
+        food.amount ?? null,
+      toggleMealComplete: mockToggleMealComplete,
+    });
+  });
 
   it('renders all food items with their amounts', () => {
     render(<Meal meal={allMeal} />);
@@ -101,14 +114,15 @@ describe("Meal type 'all'", () => {
     expect(mockSetVisible).toHaveBeenCalledWith(true);
   });
 
-  it('calls celebrate when all items are checked', () => {
+  it('calls celebrate and toggleMealComplete when all items are checked', () => {
     render(<Meal meal={allMeal} />);
     const checkboxes = screen.getAllByLabelText('checked');
     // allMeal has 2 components
     fireEvent.click(checkboxes[0]);
-    expect(jest.mocked(celebrate)).not.toHaveBeenCalled();
+    expect(mockToggleMealComplete).not.toHaveBeenCalled();
     fireEvent.click(checkboxes[1]);
     expect(jest.mocked(celebrate)).toHaveBeenCalledTimes(1);
+    expect(mockToggleMealComplete).toHaveBeenCalledWith(allMeal.name);
   });
 
   it('does not call celebrate when only some items are checked', () => {
@@ -122,7 +136,19 @@ describe("Meal type 'all'", () => {
 // ─── type 'one-of' ────────────────────────────────────────────────────────────
 
 describe("Meal type 'one-of'", () => {
-  beforeEach(() => jest.clearAllMocks());
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockUseAppContext.mockReturnValue({
+      programDay: '1-3',
+      mealMultiplierPercentage: 100,
+      setMealMultiplier: jest.fn(),
+      setProgramDay: jest.fn(),
+      completedMealNames: [],
+      calculateAmount: (food: MealType['components'][number]) =>
+        food.amount ?? null,
+      toggleMealComplete: mockToggleMealComplete,
+    });
+  });
 
   it('renders all food items', () => {
     render(<Meal meal={oneOfMeal} />);
@@ -149,7 +175,7 @@ describe("Meal type 'one-of'", () => {
     expect(screen.queryByText(/Veggies/)).not.toBeInTheDocument();
   });
 
-  it('calls celebrate only after one per category AND veggies are checked', () => {
+  it('calls celebrate and toggleMealComplete only after one per category AND veggies are checked', () => {
     render(<Meal meal={oneOfMeal} />);
     // DOM order: veggies[0], rice[1], chicken[2], olive oil[3]
     const checkboxes = screen.getAllByLabelText('checked');
@@ -158,10 +184,11 @@ describe("Meal type 'one-of'", () => {
     fireEvent.click(checkboxes[2]); // chicken
     fireEvent.click(checkboxes[3]); // olive oil
     // meal is complete but veggies not checked
-    expect(jest.mocked(celebrate)).not.toHaveBeenCalled();
+    expect(mockToggleMealComplete).not.toHaveBeenCalled();
 
     fireEvent.click(checkboxes[0]); // veggies
     expect(jest.mocked(celebrate)).toHaveBeenCalledTimes(1);
+    expect(mockToggleMealComplete).toHaveBeenCalledWith(oneOfMeal.name);
   });
 
   it('does not call celebrate when meal is checked but veggies are missing', () => {
@@ -171,5 +198,48 @@ describe("Meal type 'one-of'", () => {
     fireEvent.click(checkboxes[2]); // chicken
     fireEvent.click(checkboxes[3]); // olive oil
     expect(jest.mocked(celebrate)).not.toHaveBeenCalled();
+  });
+});
+
+// ─── toggleMealComplete ────────────────────────────────────────────────────────
+
+describe('Meal — toggleMealComplete', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockUseAppContext.mockReturnValue({
+      programDay: '1-3',
+      mealMultiplierPercentage: 100,
+      setMealMultiplier: jest.fn(),
+      setProgramDay: jest.fn(),
+      completedMealNames: [],
+      calculateAmount: (food: MealType['components'][number]) =>
+        food.amount ?? null,
+      toggleMealComplete: mockToggleMealComplete,
+    });
+  });
+
+  it('calls toggleMealComplete with the meal name when all items are checked', () => {
+    render(<Meal meal={allMeal} />);
+    const checkboxes = screen.getAllByLabelText('checked');
+    fireEvent.click(checkboxes[0]);
+    fireEvent.click(checkboxes[1]);
+    expect(mockToggleMealComplete).toHaveBeenCalledWith(allMeal.name);
+  });
+
+  it('does not call toggleMealComplete before the meal is complete', () => {
+    render(<Meal meal={allMeal} />);
+    fireEvent.click(screen.getAllByLabelText('checked')[0]);
+    expect(mockToggleMealComplete).not.toHaveBeenCalled();
+  });
+
+  it('calls toggleMealComplete for one-of meal only after veggies are checked', () => {
+    render(<Meal meal={oneOfMeal} />);
+    const checkboxes = screen.getAllByLabelText('checked');
+    fireEvent.click(checkboxes[1]); // rice
+    fireEvent.click(checkboxes[2]); // chicken
+    fireEvent.click(checkboxes[3]); // olive oil
+    expect(mockToggleMealComplete).not.toHaveBeenCalled();
+    fireEvent.click(checkboxes[0]); // veggies
+    expect(mockToggleMealComplete).toHaveBeenCalledWith(oneOfMeal.name);
   });
 });
