@@ -57,8 +57,10 @@ Next.js 13 PWA — a meal planning/diet tracker ("Cracker App"). Users follow a 
 - Test files co-located: `*.test.ts` / `*.test.tsx` next to source files
 - Component tests use `@testing-library/react`: `render`, `screen`, `fireEvent`
 - Use `renderHook` + `wrapper` for context-dependent hooks; wrap state mutations in `act()`
+- Jest transform: `babel-jest` with `next/babel` preset (handles TypeScript, JSX, and styled-jsx)
 - Mock modules with `jest.mock(...)` — use `jest.requireActual` to preserve untouched exports
 - Import mocked modules **after** `jest.mock(...)` calls, not before
+- **Never reference external `const` variables inside `jest.mock()` factory functions** — `babel-jest` hoists mock calls before `const` declarations (TDZ error). Instead, mock the module with `jest.fn()` and set return values in `beforeEach` via `jest.mocked(fn).mockReturnValue(...)`
 - Use `jest.mocked(fn)` for typed access to mocks; assign to a named const for reuse: `const mockFn = jest.mocked(fn)`
 - Use `jest.requireMock('../module')` to reach mock instances mid-test when needed
 - Browser APIs (`localStorage`) mocked by jsdom; call `localStorage.clear()` in `beforeEach`
