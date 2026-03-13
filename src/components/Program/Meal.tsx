@@ -139,48 +139,66 @@ const Meal: React.FC<{ meal: MealType }> = ({ meal }) => {
       {meal.type === 'one-of' ? (
         <>
           <ul>
-            <Divider css={{ margin: '$5 0' }} />
-            <Text b>Select one 🍠</Text>
-            {meal.components
-              .filter((component) => component.category === 'carbs')
-              .map((component) => (
-                <MealComponent
-                  key={component.name}
-                  replacement={replacements[component.name]}
-                  component={component}
-                  onCheck={handleCheck}
-                  onSelect={handleSelect}
-                  onReset={handleReset}
-                />
-              ))}
-            <Divider css={{ margin: '$5 0' }} />
-            <Text b>Select one 🍖</Text>
-            {meal.components
-              .filter((component) => component.category === 'proteins')
-              .map((component) => (
-                <MealComponent
-                  key={component.name}
-                  replacement={replacements[component.name]}
-                  component={component}
-                  onCheck={handleCheck}
-                  onSelect={handleSelect}
-                  onReset={handleReset}
-                />
-              ))}
-            <Divider css={{ margin: '$5 0' }} />
-            <Text b>Select one 🥑</Text>
-            {meal.components
-              .filter((component) => component.category === 'fats')
-              .map((component) => (
-                <MealComponent
-                  key={component.name}
-                  replacement={replacements[component.name]}
-                  component={component}
-                  onCheck={handleCheck}
-                  onSelect={handleSelect}
-                  onReset={handleReset}
-                />
-              ))}
+            {meal.components.some(
+              (component) => component.category === 'carbs',
+            ) && (
+              <>
+                <Divider css={{ margin: '$5 0' }} />
+                <Text b>Select one 🍠</Text>
+                {meal.components
+                  .filter((component) => component.category === 'carbs')
+                  .map((component) => (
+                    <MealComponent
+                      key={component.name}
+                      replacement={replacements[component.name]}
+                      component={component}
+                      onCheck={handleCheck}
+                      onSelect={handleSelect}
+                      onReset={handleReset}
+                    />
+                  ))}
+              </>
+            )}
+            {meal.components.some(
+              (component) => component.category === 'proteins',
+            ) && (
+              <>
+                <Divider css={{ margin: '$5 0' }} />
+                <Text b>Select one 🍖</Text>
+                {meal.components
+                  .filter((component) => component.category === 'proteins')
+                  .map((component) => (
+                    <MealComponent
+                      key={component.name}
+                      replacement={replacements[component.name]}
+                      component={component}
+                      onCheck={handleCheck}
+                      onSelect={handleSelect}
+                      onReset={handleReset}
+                    />
+                  ))}
+              </>
+            )}
+            {meal.components.some(
+              (component) => component.category === 'fats',
+            ) && (
+              <>
+                <Divider css={{ margin: '$5 0' }} />
+                <Text b>Select one 🥑</Text>
+                {meal.components
+                  .filter((component) => component.category === 'fats')
+                  .map((component) => (
+                    <MealComponent
+                      key={component.name}
+                      replacement={replacements[component.name]}
+                      component={component}
+                      onCheck={handleCheck}
+                      onSelect={handleSelect}
+                      onReset={handleReset}
+                    />
+                  ))}
+              </>
+            )}
           </ul>
         </>
       ) : (
