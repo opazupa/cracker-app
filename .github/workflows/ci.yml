@@ -30,3 +30,12 @@ jobs:
 
       - name: Check linting
         run: yarn lint
+
+      - name: Run unit tests
+        run: yarn test --ci
+
+      - name: Install Playwright browsers
+        run: yarn playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        run: yarn test:e2e
