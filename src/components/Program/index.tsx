@@ -9,18 +9,12 @@ import { MealCount } from '../MealCount';
 import Meal from './Meal';
 
 import 'swiper/css';
+import { TARGET_MEALS_PER_DAY } from '../../services';
 
 export const Program: React.FC<{ meals: Meals }> = ({ meals }) => {
   const [currentTimeOfTheDay, setCurrent] = useState<TimeOfTheDay>();
   const { mealMultiplierPercentage, programDay, completedMealNames } =
     useAppContext();
-  // Morning and Evening are pick-one slots (count as 1 each); Afternoon meals all count
-  const totalMeals = Object.entries(meals).reduce(
-    (sum, [group, options]) =>
-      sum + (group === 'Afternoon' ? options.length : 1),
-    0,
-  );
-  const completedCount = completedMealNames.length;
 
   useEffect(() => {
     setCurrent(getMealForTimeOfTheDay());
@@ -34,7 +28,10 @@ export const Program: React.FC<{ meals: Meals }> = ({ meals }) => {
             <code>Day {programDay}</code>
             <code>x{mealMultiplierPercentage / 100}</code>
           </Row>
-          <MealCount total={totalMeals} completed={completedCount} />
+          <MealCount
+            total={TARGET_MEALS_PER_DAY}
+            completed={completedMealNames.length}
+          />
           <Swiper
             spaceBetween={50}
             style={{

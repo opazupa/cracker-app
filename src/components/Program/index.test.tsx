@@ -62,6 +62,7 @@ jest.mock('../../hooks/useAppContext', () => ({
 import { getMealForTimeOfTheDay } from '../../utils';
 import { useAppContext } from '../../hooks/useAppContext';
 import { Program } from './index';
+import { TARGET_MEALS_PER_DAY } from '../../services';
 
 // ─── helpers ───
 
@@ -106,43 +107,13 @@ beforeEach(() => {
 // ─── totalMeals calculation ───
 
 describe('Program — totalMeals', () => {
-  it('counts Afternoon meals individually and other groups as 1 each', () => {
-    // Morning (1) + Afternoon (3) + Evening (1) = 5
+  it('counts correctly', () => {
     render(<Program meals={meals} />);
-    expect(screen.getByTestId('meal-count')).toHaveAttribute('data-total', '5');
-  });
-
-  it('counts a single Afternoon meal as 1', () => {
-    const singleAfternoon: Meals = {
-      Morning: [makeMeal('Porridge')],
-      Afternoon: [makeMeal('Lunch')],
-      Evening: [makeMeal('Dinner')],
-    };
-    // Morning (1) + Afternoon (1) + Evening (1) = 3
-    render(<Program meals={singleAfternoon} />);
-    expect(screen.getByTestId('meal-count')).toHaveAttribute('data-total', '3');
-  });
-
-  it('counts multiple Morning options as a single slot', () => {
-    const multiMorning: Meals = {
-      Morning: [makeMeal('Porridge'), makeMeal('Eggs')],
-      Afternoon: [makeMeal('Lunch')],
-      Evening: [makeMeal('Dinner')],
-    };
-    // Morning (1) + Afternoon (1) + Evening (1) = 3
-    render(<Program meals={multiMorning} />);
-    expect(screen.getByTestId('meal-count')).toHaveAttribute('data-total', '3');
-  });
-
-  it('handles an empty Afternoon group', () => {
-    const noAfternoon: Meals = {
-      Morning: [makeMeal('Porridge')],
-      Afternoon: [],
-      Evening: [makeMeal('Dinner')],
-    };
-    // Morning (1) + Afternoon (0) + Evening (1) = 2
-    render(<Program meals={noAfternoon} />);
-    expect(screen.getByTestId('meal-count')).toHaveAttribute('data-total', '2');
+    expect(TARGET_MEALS_PER_DAY).toBe(5);
+    expect(screen.getByTestId('meal-count')).toHaveAttribute(
+      'data-total',
+      `${TARGET_MEALS_PER_DAY}`,
+    );
   });
 });
 

@@ -1,5 +1,8 @@
 import { Conversions, Meal, Meals } from '../types';
 
+// Morning (1) + Afternoon (3) + Evening (1) = 5 meals
+export const TARGET_MEALS_PER_DAY = 5;
+
 const Breakfast: Meal[] = [
   {
     name: 'Porridge',
