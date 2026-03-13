@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.4.0](https://github.com/opazupa/cracker-app/compare/v2.3.2...v2.4.0) (2026-03-13)
+
+
+### Features
+
+* meal count for the day ([a659553](https://github.com/opazupa/cracker-app/commit/a659553a0e1fc09e20a0490c5a57c694fba0b771))
+
+
+### Bug Fixes
+
+* dont show empty header ([3d88877](https://github.com/opazupa/cracker-app/commit/3d8887743e573fdf177f6774b71ad4ad938f7a57))
+
 ## [2.3.2](https://github.com/opazupa/cracker-app/compare/v2.3.1...v2.3.2) (2026-03-01)
 
 
