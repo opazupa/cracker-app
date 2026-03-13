@@ -4,13 +4,9 @@ Give a structured onboarding tour of this codebase to a new contributor.
 Cracker App: a Next.js 13 PWA for meal planning on a diet program. Users follow a program with cycling days (`'1-3'`, `'4'`, `'5'`) that affect food portion sizes. Single-page app, no backend.
 
 ## 2. Core domain concepts
-Explain each of these clearly:
-- `ProgramDay`: `'1-3' | '4' | '5'` — cycles based on program start date
-- `calculateAmount(food)`: `amount × (mealMultiplierPercentage / 100) × dayMultiplier`, rounded to nearest 5
-- `mealMultiplierPercentage`: global scale for all portions (default 100%)
-- `Food.day4x` / `Food.day5x`: multipliers applied on days 4 and 5
-- `unConvertible: true`: food has no valid unit conversion
-- Meal `type: 'all'` vs `type: 'one-of'`: all foods required vs user picks one per category
+Explain each concept clearly for a new contributor:
+
+@.claude/commands/shared/domain.md
 
 ## 3. Architecture walkthrough
 Walk through each key file and its single responsibility:
@@ -30,14 +26,8 @@ Cover the key commands and why they exist:
 - `yarn commit` — Commitizen interactive conventional commit (never `git commit` directly)
 - Pre-commit hooks run ESLint + Prettier via lint-staged — never `--no-verify`
 
-## 5. Code conventions
-- PascalCase component files, barrel-exported via `components/index.ts`
-- camelCase service/util files, barrel-exported via `services/index.ts`
-- Single quotes everywhere, trailing commas required
-- `strict: true` TypeScript — no `any`
-- Functional patterns preferred
+## 5. Code conventions & SSR safety
 
-## 6. SSR safety gotcha
-Browser APIs (`localStorage`, `window`) must always be guarded with `typeof window !== 'undefined'`. See `services/local-storage.ts` for the established pattern.
+@.claude/commands/shared/conventions.md
 
 After the tour, invite the contributor to ask questions about any specific area.

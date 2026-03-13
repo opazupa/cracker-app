@@ -42,34 +42,8 @@ Next.js 13 PWA — a meal planning/diet tracker ("Cracker App"). Users follow a 
 - Meal `type: 'all'` means all components required; `type: 'one-of'` means one per category
 - `unConvertible: true` on a food means it has no conversion multiplier
 
-## E2E Testing (Playwright)
-- Config: `playwright.config.ts` — single Chromium project, auto-starts `yarn dev`, reuses server locally
-- Tests: `e2e/app.spec.ts` — single flow test covering the whole app
-- Page Object: `e2e/pages/AppPage.ts` — all selectors in `SEL` const, locators pre-built in constructor
-- No `waitForTimeout` — use `waitFor({ state })` or `aria-pressed` attribute to detect menu open/closed
-- No `{ force: true }` — always wait for the correct element state before clicking
-- Swiper clips off-slide content; scope selectors to `.swiper-slide-active`
-- NextUI Checkbox: click the `.nextui-checkbox-label`, not the hidden input
-- NextUI Navbar toggle: `aria-pressed="true/false"` signals open/closed (no `aria-expanded`)
-- `next-themes` sets a NextUI-generated class on `<html>` (not `data-theme`) for theme switching
-
-## Unit Testing Patterns (Jest)
-- Test files co-located: `*.test.ts` / `*.test.tsx` next to source files
-- Component tests use `@testing-library/react`: `render`, `screen`, `fireEvent`
-- Use `renderHook` + `wrapper` for context-dependent hooks; wrap state mutations in `act()`
-- Jest transform: `babel-jest` with `next/babel` preset (handles TypeScript, JSX, and styled-jsx)
-- Mock modules with `jest.mock(...)` — use `jest.requireActual` to preserve untouched exports
-- Import mocked modules **after** `jest.mock(...)` calls, not before
-- **Never reference external `const` variables inside `jest.mock()` factory functions** — `babel-jest` hoists mock calls before `const` declarations (TDZ error). Instead, mock the module with `jest.fn()` and set return values in `beforeEach` via `jest.mocked(fn).mockReturnValue(...)`
-- Use `jest.mocked(fn)` for typed access to mocks; assign to a named const for reuse: `const mockFn = jest.mocked(fn)`
-- Use `jest.requireMock('../module')` to reach mock instances mid-test when needed
-- Browser APIs (`localStorage`) mocked by jsdom; call `localStorage.clear()` in `beforeEach`
-- Time-dependent tests: `jest.useFakeTimers()` + `jest.setSystemTime(new Date(...))` in `beforeEach`; restore with `jest.useRealTimers()` in `afterEach`
-- Suppress React error boundary noise with `jest.spyOn(console, 'error').mockImplementation(() => {})`, restore in the same test
-- Use `jest.clearAllMocks()` in `beforeEach` for component tests that use mocked callbacks
-- Use `it.each` for parameterized cases (see `roundToNearest5`, `getMealForTimeOfTheDay`, `getCurrentDay`)
-- Group related tests with ASCII section dividers: `// ─── section name ───`
-- Path alias `@/` → `src/` works in tests (mapped in jest.config.ts)
+## Unit Testing
+Full conventions in `/tester`. Key gotcha: **never reference external `const` variables inside `jest.mock()` factory functions** — babel-jest hoists mock calls before `const` declarations (TDZ error). Use `jest.fn()` in the factory and set return values in `beforeEach` via `jest.mocked(fn).mockReturnValue(...)`.
 
 ## Git Workflow
 - Conventional commits enforced by commitlint (`feat:`, `fix:`, `chore:`, etc.)
