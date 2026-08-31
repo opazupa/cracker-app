@@ -73,7 +73,7 @@ const Breakfast: Meal[] = [
     components: [
       { name: 'Oats (dry)', category: 'carbs', amount: 15 },
       {
-        name: 'Qvark (2%)',
+        name: 'Quark (2%)',
         category: 'proteins',
         amount: 85,
         day4x: 1.05,
@@ -99,7 +99,7 @@ const Breakfast: Meal[] = [
         amount: 120,
       },
       {
-        name: 'Skinned milk',
+        name: 'Skimmed milk',
         amount: 145,
         category: 'proteins',
         unConvertible: true,
@@ -125,7 +125,7 @@ const LunchOrDinner: Omit<Meal, 'name'> = {
       day5x: 1.2,
     },
     {
-      name: 'Couscous/Qvinoa',
+      name: 'Couscous/Quinoa',
       category: 'carbs',
       amount: 115,
       day4x: 1.1,
@@ -247,7 +247,7 @@ const Snack: Meal = {
       day5x: 1.16,
     },
     {
-      name: 'Qvark (2%)',
+      name: 'Quark (2%)',
       category: 'proteins',
       amount: 170,
       day4x: 1.05,
@@ -355,7 +355,7 @@ const Evening: Meal[] = [
     type: 'all',
     components: [
       { name: 'Oats (dry)', category: 'carbs', amount: 15, day5x: 1.33 },
-      { name: 'Qvark (2%)', category: 'proteins', amount: 125 },
+      { name: 'Quark (2%)', category: 'proteins', amount: 125 },
       { name: 'Berries', category: 'carbs', amount: 155, day4x: 1.1 },
       { name: 'Banana', category: 'carbs', amount: 120 },
       { name: 'Nuts', category: 'fats', amount: 15, day5x: 1.33 },
@@ -367,7 +367,7 @@ const Evening: Meal[] = [
         day5x: 1.1,
       },
       {
-        name: 'Skinned milk',
+        name: 'Skimmed milk',
         amount: 145,
         category: 'proteins',
         unConvertible: true,
@@ -396,7 +396,7 @@ export const getConversions = (): Conversions => {
     carbs: {
       Rice: 1,
       'Pasta/Noodle': 0.7,
-      'Couscous/Qvinoa': 0.7,
+      'Couscous/Quinoa': 0.7,
       Tortilla: 0.3,
       Potato: 1.4,
       'Oats (dry)': 0.3,
@@ -421,7 +421,7 @@ export const getConversions = (): Conversions => {
       Shrimps: 1.5,
       'Full meat cuts': 1.4,
       'Cottage cheese (2%)': 1.6,
-      'Qvark (2%)': 1.9,
+      'Quark (2%)': 1.9,
       Skyr: 2.2,
       'Protein pudding': 1.9,
       'Hera powder': 0.4,
