@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.1](https://github.com/opazupa/cracker-app/compare/v2.4.0...v2.4.1) (2026-08-31)
+
+
+### Bug Fixes
+
+* correct misspelled ingredient names ([7d4ecd4](https://github.com/opazupa/cracker-app/commit/7d4ecd4069d643edfdd02b7ab43e14e7cc0f9f2f))
+
 ## [2.4.0](https://github.com/opazupa/cracker-app/compare/v2.3.2...v2.4.0) (2026-03-13)
 
 
