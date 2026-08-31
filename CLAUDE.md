@@ -47,7 +47,7 @@ Full conventions in `/tester`. Key gotcha: **never reference external `const` va
 
 ## Git Workflow
 - Conventional commits enforced by commitlint (`feat:`, `fix:`, `chore:`, etc.)
-- Pre-commit: lint-staged runs ESLint + Prettier on staged `src/` files
+- Pre-commit: lint-staged runs ESLint + Prettier on staged `src/` and `e2e/` files
 - Use `yarn commit` for interactive message builder
 - Never skip hooks (`--no-verify`)
 

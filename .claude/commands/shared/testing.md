@@ -30,20 +30,29 @@
 
 ## E2E tests (Playwright)
 
-**Config:** `playwright.config.ts` — single Chromium project, auto-starts `yarn dev`, reuses server locally
+**Config:** `playwright.config.ts` — two projects (`chromium` desktop, `mobile-chromium` Pixel 5 emulation — both Chromium-engine, since CI only installs the `chromium` browser binary), auto-starts `yarn dev`, reuses server locally
 
 **File:** `e2e/app.spec.ts` using the `AppPage` page object (`e2e/pages/AppPage.ts`)
 - Add selectors to the `SEL` const; build locators in the constructor
 - No `waitForTimeout` — use `waitFor({ state })` or check `aria-pressed` attribute
-- Scope selectors to `.swiper-slide-active` for Swiper content
+- Scope selectors to `.swiper-slide-active` for Swiper content, except gram-amount
+  assertions — scope those to a uniquely-named food's containing list instead
+  (see `SEL.eveningBreadFoodList`), since which slide is `.swiper-slide-active`
+  depends on real wall-clock time of day
 - Click `.nextui-checkbox-label`, not the hidden `<input>`
 - No `{ force: true }` — always wait for the correct element state first
 - NextUI Navbar toggle: `aria-pressed="true/false"` signals open/closed (no `aria-expanded`)
 - `next-themes` sets a NextUI-generated class on `<html>` (not `data-theme`) for theme switching
+- Tests are split into `describe('App — <facet>')` blocks, one focused `test()`
+  each (page load / day toggle & multiplier / start date persistence / meal &
+  replacement interactions / theme) — each `test()` gets a fresh browser
+  context (fresh localStorage) automatically, so each needs its own `goto()`
+  (+ `openMenu()` where relevant)
 
 ## Running and fixing tests
 
 1. Run `yarn test -- --testPathPattern=<file>` for the specific unit test file, or `yarn test:e2e` for E2E
-2. Read the output carefully — fix type errors, import issues, and failing assertions
-3. Re-run until all tests pass
-4. Run the full suite (`yarn test`) to confirm no regressions before finishing
+2. `e2e/` is linted/formatted by the same `yarn lint`/`yarn format` scripts as `src/` — run them before committing e2e changes
+3. Read the output carefully — fix type errors, import issues, and failing assertions
+4. Re-run until all tests pass
+5. Run the full suite (`yarn test`) to confirm no regressions before finishing
