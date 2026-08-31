@@ -17,6 +17,12 @@ const SEL = {
   mealCountAriaLabel: (completed: number, total: number) =>
     `${completed} of ${total} meals completed`,
 
+  // The evening "Bread" meal's food list — the only <ul> in the app whose
+  // text contains "Pineapple" (src/services/meals.ts). Used to scope
+  // gram-amount assertions without depending on `.swiper-slide-active`,
+  // which is time-of-day dependent (getMealForTimeOfTheDay).
+  eveningBreadFoodList: 'ul:has-text("Pineapple")',
+
   // active swiper slide
   activeSlide: '.swiper-slide-active',
   activeCollapseTitle: '.swiper-slide-active .nextui-collapse-title',
@@ -90,6 +96,22 @@ export class AppPage {
   async selectDay(day: '1-3' | '4' | '5') {
     await this.page.getByRole('button', { name: day }).click();
     await expect(this.page.locator(SEL.dayCode(day))).toBeVisible();
+  }
+
+  /**
+   * Locates the "<amount>g <name>" span for a food in the evening "Bread" list.
+   * NextUI's `Row`/`Col` don't render `.nextui-row`/`.nextui-column` classes
+   * (those strings are only `toString()` overrides for CSS-in-JS
+   * interpolation, never applied to the DOM) — the amount span has no stable
+   * class, so target it structurally: it's the first `<span>` in the row
+   * (the checkbox label renders no `<span>`; the 👉/❌ toggle is the second).
+   */
+  foodAmount(foodName: string): Locator {
+    return this.page
+      .locator(SEL.eveningBreadFoodList)
+      .locator(`li:has-text("${foodName}")`)
+      .locator('span')
+      .first();
   }
 
   async selectMultiplier(label: string) {

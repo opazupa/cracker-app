@@ -8,8 +8,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
-    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
+    "lint": "eslint --no-eslintrc -c .eslintrc --ignore-path .gitignore \"{src,e2e}/**/*.+(ts|js|tsx)\" \"playwright.config.ts\"",
+    "format": "prettier --ignore-path .gitignore \"{src,e2e}/**/*.+(ts|js|tsx)\" \"playwright.config.ts\" --write",
     "postinstall": "husky install",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -19,7 +19,7 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "lint-staged": {
-    "./src/**/*.{ts,js,jsx,tsx}": [
+    "./{src,e2e}/**/*.{ts,js,jsx,tsx}": [
       "yarn lint --fix",
       "yarn format"
     ]
