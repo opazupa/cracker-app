@@ -51,3 +51,18 @@ describe('clear', () => {
     expect(get<string>(KEYS.START_DATE)).toBe('2024-01-01');
   });
 });
+
+describe('get with corrupted stored data', () => {
+  it('throws when the stored value is not valid JSON', () => {
+    localStorage.setItem(KEYS.MULTIPLIER, 'not-json{');
+    expect(() => get(KEYS.MULTIPLIER)).toThrow();
+  });
+});
+
+describe('COMPLETED_MEALS key', () => {
+  it('stores and retrieves a completed-meals record', () => {
+    const record = { date: '2024-01-01', names: ['Porridge', 'Bread'] };
+    save(KEYS.COMPLETED_MEALS, record);
+    expect(get(KEYS.COMPLETED_MEALS)).toEqual(record);
+  });
+});

@@ -14,6 +14,8 @@ const SEL = {
   anyCode: 'code',
   dayCode: (day: string) => `code:has-text("Day ${day}")`,
   multiplierCode: (x: string) => `code:has-text("${x}")`,
+  mealCountAriaLabel: (completed: number, total: number) =>
+    `${completed} of ${total} meals completed`,
 
   // active swiper slide
   activeSlide: '.swiper-slide-active',
@@ -98,6 +100,20 @@ export class AppPage {
 
   async setStartDate(date: string) {
     await this.dateInput.fill(date);
+  }
+
+  async expectDay(day: '1-3' | '4' | '5') {
+    await expect(this.page.locator(SEL.dayCode(day))).toBeVisible();
+  }
+
+  async expectMultiplier(label: string) {
+    await expect(this.page.locator(SEL.multiplierCode(label))).toBeVisible();
+  }
+
+  async expectMealCount(completed: number, total = 5) {
+    await expect(
+      this.page.getByLabel(SEL.mealCountAriaLabel(completed, total)).first(),
+    ).toBeVisible();
   }
 
   // ─── meal interactions ───
